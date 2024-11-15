@@ -1,0 +1,116 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">NED File <i>simulations/small_Network_Can/small_Network_Can.ned</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="can4cqf.simulations.small_Network_Can.Small_Network_Can.html">Small_Network_Can</a>
+   </td>
+   <td>
+<i>network</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see http://www.gnu.org/licenses/.
+// 
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">simulations</span><span style="color: #000000; ">.</span><span style="color: #000000; ">small_Network_Can</span><span style="color: #000000; ">;
+</span><span style="color: #808080; font-style: italic; ">// 使用了CAN节点，CAN bus和gateway的简单网络，TSN交换机使用CQF交换机，其余设置不变，暂时设置为一跳
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">nodes</span><span style="color: #000000; ">.</span><span style="color: #000000; ">ethernet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">TSNCQFSwitch</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gateway</span><span style="color: #000000; ">.</span><span style="color: #000000; ">BusEthernetGateway</span><span style="color: #000000; ">;
+</span><span style="color: #808080; font-style: italic; ">// 导入fico4omnet
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">fico4omnet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">bus</span><span style="color: #000000; ">.</span><span style="color: #000000; ">can</span><span style="color: #000000; ">.</span><span style="color: #000000; ">CanBus</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">fico4omnet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">nodes</span><span style="color: #000000; ">.</span><span style="color: #000000; ">can</span><span style="color: #000000; ">.</span><span style="color: #000000; ">CanNode</span><span style="color: #000000; ">;
+</span><span style="color: #808080; font-style: italic; ">// 导入SignalsAndGateways
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">signalsandgateways</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gateway</span><span style="color: #000000; ">.</span><span style="color: #000000; ">transformation</span><span style="color: #000000; ">.</span><span style="color: #000000; ">GatewayTransformation</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">signalsandgateways</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gateway</span><span style="color: #000000; ">.</span><span style="color: #000000; ">buffering</span><span style="color: #000000; ">.</span><span style="color: #000000; ">AccumulationGatewayBuffering</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">network</span><span style="color: #000000; "> </span><span style="color: #000000; ">Small_Network_Can</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;bgb=604,114,white&quot;</span><span style="color: #000000; ">);
+    </span><span style="color: #800000; font-weight: bold; ">types</span><span style="color: #000000; ">:
+        </span><span style="color: #808080; font-style: italic; ">//
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// 所有链路均配置为每秒100MBit，可变延时
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">//
+</span><span style="color: #000000; ">        </span><span style="color: #800000; font-weight: bold; ">channel</span><span style="color: #000000; "> </span><span style="color: #000000; ">cable</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">ned</span><span style="color: #000000; ">.</span><span style="color: #000000; ">DatarateChannel</span><span style="color: #000000; ">
+        {
+            </span><span style="color: #000000; ">datarate</span><span style="color: #000000; "> = </span><span style="color: #008000; ">100</span><span style="color: #000000; ">Mbps</span><span style="color: #000000; ">;
+            </span><span style="color: #808080; font-style: italic; ">//bit error rate (probability (0.0-1.0) per bit)  
+</span><span style="color: #000000; ">            </span><span style="color: #000000; ">ber</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;
+            </span><span style="color: #808080; font-style: italic; ">//packet error rate (probability (0.0-1.0) per packet)  
+</span><span style="color: #000000; ">            </span><span style="color: #000000; ">per</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;
+        }
+        
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">canbus1</span><span style="color: #000000; ">: </span><span style="color: #000000; ">CanBus</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=137,62&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">canNode1</span><span style="color: #000000; ">: </span><span style="color: #000000; ">CanNode</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=51,62&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">canbus2</span><span style="color: #000000; ">: </span><span style="color: #000000; ">CanBus</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=467,62&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">canNode2</span><span style="color: #000000; ">: </span><span style="color: #000000; ">CanNode</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=553,62&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">gateway1</span><span style="color: #000000; ">: </span><span style="color: #000000; ">Gateway1</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=214,62&quot;</span><span style="color: #000000; ">);
+            </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; ">cang</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">];
+                </span><span style="color: #000000; ">ethg</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">];
+        }
+
+        </span><span style="color: #000000; ">gateway2</span><span style="color: #000000; ">: </span><span style="color: #000000; ">Gateway2</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=381,62&quot;</span><span style="color: #000000; ">);
+            </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; ">cang</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">];
+                </span><span style="color: #000000; ">ethg</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">];
+        }
+
+        </span><span style="color: #000000; ">switch</span><span style="color: #000000; ">: </span><span style="color: #000000; ">Switch</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=295,62&quot;</span><span style="color: #000000; ">);
+            </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; ">ethg</span><span style="color: #000000; ">[</span><span style="color: #008000; ">2</span><span style="color: #000000; ">];
+        }
+
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">gateway1</span><span style="color: #000000; ">.</span><span style="color: #000000; ">ethg</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">&lt;--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">cable</span><span style="color: #000000; "> {  </span><span style="color: #000000; ">delay</span><span style="color: #000000; "> = </span><span style="color: #008000; ">100</span><span style="color: #000000; ">ns</span><span style="color: #000000; ">; } </span><span style="color: #800000; font-weight: bold; ">&lt;--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">switch</span><span style="color: #000000; ">.</span><span style="color: #000000; ">ethg</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">];
+        </span><span style="color: #000000; ">gateway2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">ethg</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">&lt;--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">cable</span><span style="color: #000000; "> {  </span><span style="color: #000000; ">delay</span><span style="color: #000000; "> = </span><span style="color: #008000; ">50</span><span style="color: #000000; ">ns</span><span style="color: #000000; ">; } </span><span style="color: #800000; font-weight: bold; ">&lt;--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">switch</span><span style="color: #000000; ">.</span><span style="color: #000000; ">ethg</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">];
+
+		</span><span style="color: #000000; ">gateway1</span><span style="color: #000000; ">.</span><span style="color: #000000; ">cang</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">&lt;--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">canbus1</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gate</span><span style="color: #000000; ">++;
+		</span><span style="color: #000000; ">gateway2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">cang</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">&lt;--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">canbus2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gate</span><span style="color: #000000; ">++;
+		
+        </span><span style="color: #000000; ">canbus1</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gate</span><span style="color: #000000; ">++ </span><span style="color: #800000; font-weight: bold; ">&lt;--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">canNode1</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gate</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">canbus2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gate</span><span style="color: #000000; ">++ </span><span style="color: #800000; font-weight: bold; ">&lt;--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">canNode2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gate</span><span style="color: #000000; ">;        
+}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

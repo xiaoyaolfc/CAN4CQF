@@ -1,0 +1,123 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Packet <i>IEEE8021QchBEFlow</i></h2>
+<b>File: <a href="src-can4cqf-linklayer-message-IEEE8021QchBEFlow.msg.html">src/can4cqf/linklayer/message/IEEE8021QchBEFlow.msg</a></b><br/><p><a href="../doxy/classCAN4CQF_1_1IEEE8021QchBEFlow.html" target="mainframe"><b>C++ definition</b></a></p>
+
+<p>TODO generated message class</p>
+<h3 class="subtitle">Usage diagram:</h3>
+<p>The following diagram shows usage relationships between types.
+Unresolved types are missing from the diagram. Click <a href="full-msg-usage-diagram.html">here</a> to see the full picture.</p>
+<img src="src-can4cqf-linklayer-message-IEEE8021QchBEFlow-usage.png" ismap="yes" usemap="#usage-diagram"/><map name="usage-diagram"><area shape="rect" id="node1" href="src-can4cqf-linklayer-message-IEEE8021QchBEFlow.html" title="Packet IEEE8021QchBEFlow" alt="" coords="5,5,156,31">
+</map>
+<h3 class="subtitle">Inheritance diagram:</h3>
+<p>The following diagram shows inheritance relationships for this type.
+Unresolved types are missing from the diagram. Click <a href="full-msg-inheritance-diagram.html">here</a> to see the full picture.</p>
+<img src="src-can4cqf-linklayer-message-IEEE8021QchBEFlow-inheritance.png" ismap="yes" usemap="#inheritance-diagram"/><map name="inheritance-diagram"><area shape="rect" id="node1" href="src-can4cqf-linklayer-message-IEEE8021QchBEFlow.html" title="Packet IEEE8021QchBEFlow" alt="" coords="5,79,156,104">
+<area shape="rect" id="node2" href="../../../inet/doc/neddoc/src-inet-linklayer-ethernet-EthernetIIFrame.html" title="Packet EthernetIIFrame" alt="" coords="23,5,139,31">
+</map>
+<h3 class="subtitle">Extends:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="../../../inet/doc/neddoc/src-inet-linklayer-ethernet-EthernetIIFrame.html">EthernetIIFrame</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+
+<p>Ethernet II headers contain a 16-bit ~EtherType to identify
+the encapsulated protocol.</p>
+
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Fields:</h3>
+<table class="fieldstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="local">
+   <td>byteLength</td>
+   <td>
+      <i>
+</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="local">
+   <td>etherType</td>
+   <td>
+      <i>
+int</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="local">
+   <td>pcp</td>
+   <td>
+      <i>
+uint8_t</i>
+   </td>
+   <td>
+<p>表示报文优先级的，TT流仅使用前两个优先级</p>
+</td>
+</tr>
+<tr class="local">
+   <td>de</td>
+   <td>
+      <i>
+bool</i>
+   </td>
+   <td>
+<p>或者结合PCP来指示在存在拥塞的情况下有资格丢弃的帧。</p>
+</td>
+</tr>
+<tr class="local">
+   <td>VID</td>
+   <td>
+      <i>
+uint16_t</i>
+   </td>
+   <td>
+<p>VLAN标识符</p>
+</td>
+</tr>
+<tr class="local">
+   <td>displayString</td>
+   <td>
+      <i>
+string</i>
+   </td>
+   <td>
+<p>设置message 颜色</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>dest</td>
+   <td>
+      <i>
+MACAddress</i>
+   </td>
+   <td></td>
+</tr>
+<tr class="inherited">
+   <td>src</td>
+   <td>
+      <i>
+MACAddress</i>
+   </td>
+   <td></td>
+</tr>
+</table>

@@ -1,0 +1,10 @@
+<area shape="rect" id="node1" href="can4cqf.can4cqf.linklayer.shaper.IEEE8021Qch.IEEE8021Qch_shaper.html" title="Compound Module IEEE8021Qch_shaper" alt="" coords="685,79,835,104">
+<area shape="rect" id="node2" href="../../../CoRE4INET/doc/neddoc/core4inet.linklayer.shaper.IEEE8021Qbv.selectionAlgorithm.IIEEE8021QbvSelectionAlgorithm.html" title="Module Interface IIEEE8021QbvSelectionAlgorithm" alt="" coords="5,152,224,177">
+<area shape="rect" id="node3" href="../../../CoRE4INET/doc/neddoc/core4inet.linklayer.shaper.IEEE8021Qbv.selection.IIEEE8021QbvSelection.html" title="Module Interface IIEEE8021QbvSelection" alt="" coords="248,152,411,177">
+<area shape="rect" id="node4" href="ned.IdealChannel.html" title="Channel IdealChannel" alt="" coords="435,152,533,177">
+<area shape="rect" id="node5" href="../../../CoRE4INET/doc/neddoc/core4inet.linklayer.shaper.IEEE8021Qbv.gate.IIEEE8021QbvGateControlList.html" title="Module Interface IIEEE8021QbvGateControlList" alt="" coords="557,152,757,177">
+<area shape="rect" id="node6" href="../../../CoRE4INET/doc/neddoc/core4inet.linklayer.shaper.IEEE8021Qbv.queueing.IIEEE8021QbvQueueing.html" title="Module Interface IIEEE8021QbvQueueing" alt="" coords="782,152,946,177">
+<area shape="rect" id="node7" href="../../../CoRE4INET/doc/neddoc/core4inet.linklayer.shaper.IEEE8021Qbv.gate.IIEEE8021QbvGate.html" title="Module Interface IIEEE8021QbvGate" alt="" coords="970,152,1107,177">
+<area shape="rect" id="node8" href="can4cqf.can4cqf.linklayer.shaper.IEEE8021Qch.IRxgate.html" title="Module Interface IRxgate" alt="" coords="1132,152,1204,177">
+<area shape="rect" id="node9" href="../../../CoRE4INET/doc/neddoc/core4inet.buffer.base.IBuffer.html" title="Module Interface IBuffer" alt="" coords="1228,152,1300,177">
+<area shape="rect" id="node10" href="can4cqf.can4cqf.linklayer.port.IEEE8021QchPHYPort.html" title="Compound Module IEEE8021QchPHYPort" alt="" coords="681,5,839,31">

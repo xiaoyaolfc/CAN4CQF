@@ -1,0 +1,22 @@
+实现方法：
+1.在Gateway复杂模块中修改其中的buffer,transfomation两个简单模块，实现根据业务流封装不同Can帧
+2.对buffer模块的修改：按照我的想法，在buffer模块中应该就完成业务流的判断和预封装，对于业务流的判断，可以在XML文件中给出不同业务流定义(HRTF,ARTF,LRTF),
+  对于HRTF由于其为高实时性业务流，需要立即转发，所以需要定义一个新的MSG封装
+  对于ARTF是封装主要目标，根据约束条件进行循环判断，并不断插入到ARTF Message中，当存在报文不满足约束条件时，立即发送至transformation模块
+  	新增想法对ARTF数据进行更为细致的业务流划分，根据优先级ID和周期/频率period，分为<ID,frequency>:{HH,LH,HL,LL}，在封装算法完成后，进行排序调整，
+  	同样是按照业务流进行移动，方便了在目的CAN网络前的Gateway进行转发，即按顺序转发即可
+  对于LRTF根据我的想法，将其作为一个报文的结束标志，及有一组ARTF报文即将发送时，将LRTF附在该封装报文的结尾，“搭便车”实现发送
+3.对于transformation模块，需要根据buffer模块发送数据类型进行判断
+  如果到达的是HRTF message，直接封装为IEEE8021QchTT message发送到switch即可
+  如果到达的是ARTF message，同样封装为IEEE8021QchTT message发送到switch 
+4.故需要定义两个MSG文件：HRTF，ARTF；HRTF仅包含一个CAN报文，ARTF包含若干CAN报文，其中ARTF应该发送几个信号分别表示封装报文数量和报文大小   
+
+AggregatuinGatewayBuffering需要修改的部分
+.ned:增加两个信号变量，观测ARTF封装报文的个数和大小，增加约束条件判断阈值：
+	alpha->时延约束阈值：循环判断ARTF所有报文是否满足其当前deadline<alpha * max{deadline}，若不满足，则封装完成并转发
+	beta->封装数量约束：考虑到SRP需要对整个链路进行资源预留，仅使用30%的链路负载完成传输，故一个TSN帧最多封装1500*30%/18=25，即beta=25
+.cc:增加约束条件判断函数，并根据到达报文的类型选择不同的封装策略	
+	并且对于上行链路采用约束条件进行判断后，进行两种不同的封装
+	对于下行链路，同样根据到达类型：HRTF，ARTF进行下一步的解封装发送
+
+PS:如果需要可视化的图标，可以在"omnetpp-5.5.1/images/block"中去找

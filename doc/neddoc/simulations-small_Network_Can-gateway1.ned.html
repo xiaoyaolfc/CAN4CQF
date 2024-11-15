@@ -1,0 +1,60 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">NED File <i>simulations/small_Network_Can/gateway1.ned</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="can4cqf.simulations.small_Network_Can.Gateway1.html">Gateway1</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see http://www.gnu.org/licenses/.
+// 
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">simulations</span><span style="color: #000000; ">.</span><span style="color: #000000; ">small_Network_Can</span><span style="color: #000000; ">;
+
+</span><span style="color: #808080; font-style: italic; ">//import can2cqfagg.can2cqfagg.BusEthernetGateway;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gateway</span><span style="color: #000000; ">.</span><span style="color: #000000; ">CANBusIEEE8021QchGateway</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">core4inet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">incoming</span><span style="color: #000000; ">.</span><span style="color: #000000; ">AS6802</span><span style="color: #000000; ">.</span><span style="color: #000000; ">TTIncoming</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">core4inet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">buffer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">AS6802</span><span style="color: #000000; ">.</span><span style="color: #000000; ">TTDoubleBuffer</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">signalsandgateways</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gateway</span><span style="color: #000000; ">.</span><span style="color: #000000; ">buffering</span><span style="color: #000000; ">.</span><span style="color: #000000; ">AccumulationGatewayBuffering</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">signalsandgateways</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gateway</span><span style="color: #000000; ">.</span><span style="color: #000000; ">transformation</span><span style="color: #000000; ">.</span><span style="color: #000000; ">GatewayTransformation</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">Gateway1</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">CANBusIEEE8021QchGateway</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; ">:
+}</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

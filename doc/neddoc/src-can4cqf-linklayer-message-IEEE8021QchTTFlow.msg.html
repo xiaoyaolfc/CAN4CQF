@@ -1,0 +1,71 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Msg File <i>src/can4cqf/linklayer/message/IEEE8021QchTTFlow.msg</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="src-can4cqf-linklayer-message-IEEE8021QchTTFlow.html">IEEE8021QchTTFlow</a>
+   </td>
+   <td>
+<i>packet</i>
+   </td>
+   <td>
+
+<p>定义基于IEEE802.1Qch的time-trigger message，其本质与IEEE802.1Qbv参数相同，仅在可视化方面有所区别，方便区别于原有框架代码</p>
+
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see http://www.gnu.org/licenses/.
+// 
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">cplusplus</span><span style="color: #000000; "> {{
+#</span><span style="color: #000000; ">include</span><span style="color: #000000; "> </span><span style="color: #008000; ">&quot;inet/linklayer/ethernet/EtherFrame_m.h&quot;</span><span style="color: #000000; ">
+}}
+</span><span style="color: #808080; font-style: italic; ">// 直接从INET中扩展标准EtherNet帧
+</span><span style="color: #800000; font-weight: bold; ">class</span><span style="color: #000000; "> </span><span style="color: #000000; ">inet</span><span style="color: #000000; ">::</span><span style="color: #000000; ">EthernetIIFrame</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">namespace</span><span style="color: #000000; "> </span><span style="color: #000000; ">CAN4CQF</span><span style="color: #000000; ">;
+
+</span><span style="color: #808080; font-style: italic; ">//
+// 定义基于IEEE802.1Qch的time-trigger message，其本质与IEEE802.1Qbv参数相同，仅在可视化方面有所区别，方便区别于原有框架代码
+//
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">IEEE8021QchTTFlow</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">EthernetIIFrame</span><span style="color: #000000; "> {
+    </span><span style="color: #808080; font-style: italic; ">// 无数据载荷时的payload
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">byteLength</span><span style="color: #000000; "> = </span><span style="color: #008000; ">22</span><span style="color: #000000; ">;
+    </span><span style="color: #808080; font-style: italic; ">// IEEE802.1Q的网络类型提示
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">etherType</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">x8100</span><span style="color: #000000; ">;
+    </span><span style="color: #808080; font-style: italic; ">// 表示报文优先级的，TT流仅使用前两个优先级
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">uint8_t</span><span style="color: #000000; "> </span><span style="color: #000000; ">pcp</span><span style="color: #000000; ">;
+    </span><span style="color: #808080; font-style: italic; ">//或者结合PCP来指示在存在拥塞的情况下有资格丢弃的帧。 
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">de</span><span style="color: #000000; ">;    
+    </span><span style="color: #808080; font-style: italic; ">// VLAN标识符
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">uint16_t</span><span style="color: #000000; "> </span><span style="color: #000000; ">VID</span><span style="color: #000000; "> = </span><span style="color: #008000; ">0</span><span style="color: #000000; ">;   
+    </span><span style="color: #808080; font-style: italic; ">// 设置message 颜色
+</span><span style="color: #000000; ">    </span><span style="color: #0000ff; font-style: italic; ">//#给几个可选项：rect,oval,triangle,hexagon,circle,roundedrect
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">displayString</span><span style="color: #000000; "> = </span><span style="color: #008000; ">&quot;b=100,100,hexagon,blue&quot;</span><span style="color: #000000; ">;       
+}</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

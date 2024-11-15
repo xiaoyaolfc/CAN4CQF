@@ -1,0 +1,130 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">NED File <i>src/can4cqf/linklayer/shaper/IEEE8021Qch/IEEE8021Qch_shaper.ned</i></h2>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="can4cqf.can4cqf.linklayer.shaper.IEEE8021Qch.IEEE8021Qch_shaper.html">IEEE8021Qch_shaper</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see http://www.gnu.org/licenses/.
+// 
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">linklayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">shaper</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IEEE8021Qch</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">core4inet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">linklayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">shaper</span><span style="color: #000000; ">.</span><span style="color: #000000; ">base</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IShaper</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">core4inet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">linklayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">shaper</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IEEE8021Qbv</span><span style="color: #000000; ">.</span><span style="color: #000000; ">queueing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IIEEE8021QbvQueueing</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">core4inet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">buffer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">base</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IBuffer</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">core4inet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">linklayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">shaper</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IEEE8021Qbv</span><span style="color: #000000; ">.</span><span style="color: #000000; ">selectionAlgorithm</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IIEEE8021QbvSelectionAlgorithm</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">core4inet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">linklayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">shaper</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IEEE8021Qbv</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gate</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IIEEE8021QbvGate</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">core4inet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">linklayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">shaper</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IEEE8021Qbv</span><span style="color: #000000; ">.</span><span style="color: #000000; ">selection</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IIEEE8021QbvSelection</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">core4inet</span><span style="color: #000000; ">.</span><span style="color: #000000; ">linklayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">shaper</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IEEE8021Qbv</span><span style="color: #000000; ">.</span><span style="color: #000000; ">gate</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IIEEE8021QbvGateControlList</span><span style="color: #000000; ">;
+</span><span style="color: #808080; font-style: italic; ">// 导入CQF
+//import can2cqfagg.can2cqfagg.cqf.ICQF;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">can4cqf</span><span style="color: #000000; ">.</span><span style="color: #000000; ">linklayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">shaper</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IEEE8021Qch</span><span style="color: #000000; ">.</span><span style="color: #000000; ">IRxgate</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">IEEE8021Qch_shaper</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">IShaper</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;i=block/classifier&quot;</span><span style="color: #000000; ">);
+        </span><span style="color: #808080; font-style: italic; ">//Untagged VLAN. Outgoing frames with this VLAN get untagged.
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">untaggedVID</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">0</span><span style="color: #000000; ">);
+        </span><span style="color: #808080; font-style: italic; ">//Interface allows frames with this VLAN to leave the port.
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">taggedVIDs</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;0&quot;</span><span style="color: #000000; ">);
+        </span><span style="color: #808080; font-style: italic; ">// Number of priorities.
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">numPCP</span><span style="color: #000000; "> = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">8</span><span style="color: #000000; ">);
+        </span><span style="color: #808080; font-style: italic; ">// Bandwidth of the TDMA traffic with higher priority than the CBS on this port (for compability with SRProtocol module)
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// 在此端口(为了与SRProtocol模块兼容)上具有比CBS更高优先级的TDMA业务的带宽
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">AVBHigherPriorityBandwidth</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@unit</span><span style="color: #000000; ">(</span><span style="color: #000000; ">bps</span><span style="color: #000000; ">) = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">0</span><span style="color: #000000; ">bps</span><span style="color: #000000; ">);
+    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #808080; font-style: italic; ">// Input of the IEEE 802.1Qbv shaper.
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">in</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@labels</span><span style="color: #000000; ">(</span><span style="color: #000000; ">EtherFrame</span><span style="color: #000000; ">);
+        </span><span style="color: #808080; font-style: italic; ">// Input of the IEEE 802.1Qbv shaper for the direct in of the Port.
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">inD</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@labels</span><span style="color: #000000; ">(</span><span style="color: #000000; ">EtherFrame</span><span style="color: #000000; ">);
+        </span><span style="color: #808080; font-style: italic; ">// Output of the IEEE 802.1Qbv shaper.
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">out</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@labels</span><span style="color: #000000; ">(</span><span style="color: #000000; ">EtherFrame</span><span style="color: #000000; ">);
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">queueing</span><span style="color: #000000; ">: &lt;</span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;IEEE8021QbvQueueing&quot;</span><span style="color: #000000; ">)&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">IIEEE8021QbvQueueing</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=74,143&quot;</span><span style="color: #000000; ">);
+                </span><span style="color: #000000; ">untaggedVID</span><span style="color: #000000; "> = </span><span style="color: #000000; ">untaggedVID</span><span style="color: #000000; ">;
+                </span><span style="color: #000000; ">taggedVIDs</span><span style="color: #000000; "> = </span><span style="color: #000000; ">taggedVIDs</span><span style="color: #000000; ">;
+                </span><span style="color: #000000; ">numPCP</span><span style="color: #000000; "> = </span><span style="color: #000000; ">numPCP</span><span style="color: #000000; ">;
+        }
+        </span><span style="color: #000000; ">queue</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numPCP</span><span style="color: #000000; ">]: &lt;</span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;IEEE8021QbvQueue&quot;</span><span style="color: #000000; ">)&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">IBuffer</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=292,143,c,130&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #808080; font-style: italic; ">// 使用CQF队列，本质上就是一个IBuffer缓冲区
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">//        cqf[2]: &lt;default(&quot;IEEE8021QbvQueue&quot;)&gt; like IBuffer {
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">//            @display(&quot;p=292,143,c,130&quot;);
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">//        }
+</span><span style="color: #000000; ">        </span><span style="color: #000000; ">rxgate</span><span style="color: #000000; ">: &lt;</span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;Rxgate&quot;</span><span style="color: #000000; ">)&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">IRxgate</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=176,143&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">transmissionSelectionAlgorithm</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numPCP</span><span style="color: #000000; ">]: &lt;</span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;IEEE8021QbvSelectionAlgorithm&quot;</span><span style="color: #000000; ">)&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">IIEEE8021QbvSelectionAlgorithm</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=498,143,c,130&quot;</span><span style="color: #000000; ">);
+        }
+
+        </span><span style="color: #000000; ">transmissionGate</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numPCP</span><span style="color: #000000; ">]: &lt;</span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;IEEE8021QbvGate&quot;</span><span style="color: #000000; ">)&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">IIEEE8021QbvGate</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=789,143,c,130&quot;</span><span style="color: #000000; ">);
+        }
+
+        </span><span style="color: #000000; ">transmissionSelection</span><span style="color: #000000; ">: &lt;</span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;IEEE8021QbvSelection&quot;</span><span style="color: #000000; ">)&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">IIEEE8021QbvSelection</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=1049,143&quot;</span><span style="color: #000000; ">);
+                </span><span style="color: #000000; ">numPCP</span><span style="color: #000000; "> = </span><span style="color: #000000; ">numPCP</span><span style="color: #000000; ">;
+        }
+
+        </span><span style="color: #000000; ">gateControlList</span><span style="color: #000000; ">: &lt;</span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;IEEE8021QbvGateControlList&quot;</span><span style="color: #000000; ">)&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">IIEEE8021QbvGateControlList</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=790,55&quot;</span><span style="color: #000000; ">);
+                </span><span style="color: #000000; ">numGates</span><span style="color: #000000; "> = </span><span style="color: #000000; ">numPCP</span><span style="color: #000000; ">;
+        }
+
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">in</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">queueing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">in</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">];</span><span style="color: #808080; font-style: italic; ">//使用整形器的帧从in门进入队列
+</span><span style="color: #000000; ">        </span><span style="color: #000000; ">inD</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">queueing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">in</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">];</span><span style="color: #808080; font-style: italic; ">//不使用整形器的帧从inD门进入队列
+</span><span style="color: #000000; ">        </span><span style="color: #800000; font-weight: bold; ">for</span><span style="color: #000000; "> </span><span style="color: #000000; ">i</span><span style="color: #000000; ">=</span><span style="color: #008000; ">2</span><span style="color: #000000; ">..</span><span style="color: #000000; ">numPCP</span><span style="color: #000000; ">-</span><span style="color: #008000; ">1</span><span style="color: #000000; "> {
+            </span><span style="color: #000000; ">queueing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">out</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">queue</span><span style="color: #000000; ">[</span><span style="color: #000000; ">i</span><span style="color: #000000; ">].</span><span style="color: #000000; ">in</span><span style="color: #000000; ">;
+        }
+        </span><span style="color: #000000; ">queueing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">out</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">rxgate</span><span style="color: #000000; ">.</span><span style="color: #000000; ">rxin</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">];
+        </span><span style="color: #000000; ">queueing</span><span style="color: #000000; ">.</span><span style="color: #000000; ">out</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">rxgate</span><span style="color: #000000; ">.</span><span style="color: #000000; ">rxin</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">];
+        </span><span style="color: #808080; font-style: italic; ">//        rxgate.rxout[1] --&gt; cqf[1].in;
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">//        rxgate.rxout[0] --&gt; cqf[0].in;
+</span><span style="color: #000000; ">        </span><span style="color: #000000; ">rxgate</span><span style="color: #000000; ">.</span><span style="color: #000000; ">rxout</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">queue</span><span style="color: #000000; ">[</span><span style="color: #008000; ">0</span><span style="color: #000000; ">].</span><span style="color: #000000; ">in</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">rxgate</span><span style="color: #000000; ">.</span><span style="color: #000000; ">rxout</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">] </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">queue</span><span style="color: #000000; ">[</span><span style="color: #008000; ">1</span><span style="color: #000000; ">].</span><span style="color: #000000; ">in</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">transmissionSelection</span><span style="color: #000000; ">.</span><span style="color: #000000; ">out</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">out</span><span style="color: #000000; ">;    
+}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

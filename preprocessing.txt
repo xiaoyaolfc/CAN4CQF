@@ -1,0 +1,4 @@
+sed -i '578,579d' General-#0.
+
+针对_same_period的预处理
+sed -i '619,620d' General-#0.vec 
