@@ -28,7 +28,7 @@ simple EDFGatewayTransformation like IGatewayTransformation
         @statistic[EncapCanFrameCnt](title="Encapsulation-CAN"; source=EncapCanFrameCnt; record=vector; interpolationmode=linear);        
         @statistic[RAE_Bandwidth](title="Bandwidth"; source=RAE_Bandwidth; record=vector; interpolationmode=linear);        
         // 定义每隔timeout后发送存储的FIFO报文
-        double timeout = default(0.0002);
+        double timeout @unit(s)= default(0.0002s);
         //Path of the gateway configuration xml file
         xml configXML;        
         //Gateway ID in gateway config file. If auto or empty the gateway module name will be used.

@@ -180,6 +180,9 @@ bool CircularRotationBuffer::EncapsulateTSNFrame(){
     caluculateEndToEndDelay();
     vector<pair<CanDataFrame*,double>> canfdinfo_vector_sort;
     for (auto it = this->canfdinfo_vector.begin(); it != this->canfdinfo_vector.end(); ) {
+        if(it->canfdmsg->getCanID() == 153){
+            EV<<"153"<<endl;
+        }
         if (it->remaining_Deadline >= 0 && it->remaining_Deadline <= this->timeout * 1e3) {
             // Message is within acceptable remaining deadline,and use T_CQF-remaining_Deadline as the final time
             canfdinfo_vector_sort.push_back(make_pair(it->canfdmsg, this->timeout - it->remaining_Deadline *1e-3));
