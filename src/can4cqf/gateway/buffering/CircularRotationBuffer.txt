@@ -1,0 +1,196 @@
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see http://www.gnu.org/licenses/.
+// 
+
+#include "CircularRotationBuffer.h"
+using namespace FiCo4OMNeT;
+using namespace std;
+namespace CAN4CQF {
+
+Define_Module(CircularRotationBuffer);
+
+CircularRotationBuffer::CircularRotationBuffer(){
+
+}
+CircularRotationBuffer::~CircularRotationBuffer(){
+    cancelAndDelete(continuousFunctionMsg);
+}
+
+void CircularRotationBuffer::initialize()
+{
+    this->maxNuminCQF = par("maxNuminCQF").intValue();
+    this->timeout = par("timeout").doubleValue();
+    this->tau_arb = par("tau_arb").doubleValue();
+    this->tau_tarn = par("tau_tarn").doubleValue();
+    this->lamda = par("lamda").doubleValue();
+    handleParameterChange(nullptr);
+    continuousFunctionMsg = new cMessage("ContinuousFunction");
+    scheduleAt(simTime() + timeout, continuousFunctionMsg);
+}
+
+// 参数判断函数
+void CircularRotationBuffer::handleParameterChange(const char *parname){
+    if (!parname || !strcmp(parname, "gatewayID"))
+        {
+            this->gatewayID = par("gatewayID").stringValue();
+            if(this->gatewayID.empty() || !strcmp(this->gatewayID.c_str(), "auto")){
+                //auto create id!
+                this->gatewayID = this->getParentModule()->getParentModule()->getName();
+            }
+        }
+}
+
+void CircularRotationBuffer::handleMessage(cMessage *msg)
+{
+    if(msg->isSelfMessage()){
+        if(ChecktimeinTCQF()){
+            scheduleAt(simTime() + this->timeout, msg);
+        }else{
+            // 需要筛选那些报文应该送入transformation模块中
+            if(EncapsulateTSNFrame()){
+                CircularRotationMessage* crcTSNframe = new CircularRotationMessage();
+                crcTSNframe->setAllCanDataFrameAndHoldTime(this->forwarding_send_msg);
+                send(crcTSNframe,gate("out"));
+            }
+            this->forwarding_send_msg.clear();
+            scheduleAt(simTime() + this->timeout, msg);
+        }
+    }else if(CanDataFrame* dataFrame = dynamic_cast<CanDataFrame*>(msg)){
+        // 将到达的CAN-FD数据
+        getCanfdArrivingInfo(dataFrame);
+    }else if (dynamic_cast<inet::EthernetIIFrame*>(msg)) {
+        send(msg, gate("out"));
+    } else if(dynamic_cast<IEEE8021QchTTFlow*>(msg)){
+        send(msg,"out");
+    } else if(dynamic_cast<IEEE8021QchBEFlow*>(msg)){
+        send(msg,"out");
+    } else{
+        delete msg;
+    }
+}
+
+// 检查时间间隔是否合适
+bool CircularRotationBuffer::ChecktimeinTCQF(){
+    double current_time = static_cast<double>(simTime().inUnit(SIMTIME_US));
+    if(T_CQF_loopnum * timeout * 1e6 <= current_time && current_time < (T_CQF_loopnum + 1) * timeout * 1e6){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// 存储CAN-FD的到达信息
+void CircularRotationBuffer::getCanfdArrivingInfo(CanDataFrame* msg){
+    canfdInfo canfdinfo_new;
+//    canfdInfo* canfdinfo_new = new canfdInfo();
+    canfdinfo_new.canfdmsg=msg;
+    canfdinfo_new.time_arriving=simTime();
+    canfdinfo_new.time_hold=(this->T_CQF_loopnum+1)*this->timeout;
+    canfdinfo_new.zeta=0;
+    canfdinfo_new.C_i = (msg->getBitLength()*this->tau_tarn+32*this->tau_arb) * 1e3;// 单位ms
+    canfdinfo_new.D_i = this->lamda * canfdinfo_new.canfdmsg->getPeriod() * 1e3;// msg->getPeriod()返回的单位是s，需要转换为ms
+    canfdinfo_new.P_i = msg->getCanID();
+    this->canfdinfo_vector.push_back(canfdinfo_new);
+    // 存储计算所需的数据，单位为ms
+    if(wcrt_data_map.find(canfdinfo_new.P_i) == wcrt_data_map.end()){
+        wcrt_data_map[canfdinfo_new.P_i] = {canfdinfo_new.canfdmsg->getPeriod()*1e3, canfdinfo_new.C_i};
+    }
+    double Bi;
+    // b_i计算存在问题
+    for(auto canfdinfo_vec:this->canfdinfo_vector){
+        Bi=max(canfdinfo_new.C_i,canfdinfo_vec.C_i);
+    }
+    // 使用ms计算WCRT
+    canfdinfo_new.wcrt = caculateWCRT(canfdinfo_new.C_i,canfdinfo_new.P_i,canfdinfo_new.D_i,Bi);
+    printf("canfd_id:%d, canfd_period:%f, canfd_wcrt:%f\n",canfdinfo_new.P_i,msg->getPeriod(),canfdinfo_new.wcrt);
+}
+
+double CircularRotationBuffer::caculateWCRT(double w_i,int p_i, double d_i, double b_i) {
+    /*
+     * @brief 使用latex的wcrt计算公式：
+     * w_{i}^{n+1}=\displaystyle B_i+
+        \sum\limits_{m_{j}\in hp(m_{i})}\left\lceil
+        \frac{w_{i}^{n}+\tau_{tran}}{T_{j}}\right\rceil C_{j}
+        @param:
+            w_i: wcrt计算开始的初值
+            p_i：当前计算报文的优先级id，同时也是wcrt计算循环次数的上线，暂时设置为报文的优先级p_i
+            d_i：当前报文的Deadline
+            b_i：计算wcrt计算需要的必备参数
+     * */
+    int iteration = 0;
+    double w_i_n = b_i;
+    while(iteration <= p_i){
+        double pre_w_i_n = w_i_n;
+        for(const auto& entry: wcrt_data_map){
+            int msgId = entry.first;
+            const wcrt_data_info& msgData = entry.second;
+            if(msgId <= p_i){
+                double contribution = std::ceil((w_i + this->tau_tarn) / msgData.period) * msgData.c_i;
+                w_i_n += contribution;
+            }
+        }
+
+        // 检查停止条件
+        if (w_i_n >= d_i || std::fabs(w_i_n - pre_w_i_n) < std::numeric_limits<double>::epsilon()) {
+            // w_i_n 大于或等于 d_i，或者没有显著变化，停止迭代
+            break;
+        }
+        iteration++;
+    }
+    return w_i_n;
+}
+
+bool CircularRotationBuffer::EncapsulateTSNFrame(){
+    /*
+        @param: 已有参数,this->canfdinfo_vector，存储了所有到达的CAN-FD数据
+        @target: 封装成TSN帧，并发送出去
+        @return: true->有报文需要发送
+                    false->无报文发送
+    */
+    caluculateEndToEndDalay();
+    vector<pair<CanDataFrame*,double>> canfdinfo_vector_sort;
+    for (auto it = this->canfdinfo_vector.begin(); it!= this->canfdinfo_vector.end(); ) {
+        if (it->remaining_Deadline <= this->timeout * 1e3) {
+            canfdinfo_vector_sort.push_back(make_pair(it->canfdmsg, it->remaining_Deadline));
+            it = this->canfdinfo_vector.erase(it);  // 直接删除当前元素并更新迭代器
+        } else {
+            it->zeta++;
+            ++it;
+        }
+    }
+    sort(canfdinfo_vector_sort.begin(), canfdinfo_vector_sort.end() , [](const pair<CanDataFrame*,double>& a, const pair<CanDataFrame*,double>& b){
+        return a.second < b.second;
+    });
+    for(const auto& pair_canfdinfo: canfdinfo_vector_sort){
+        this->forwarding_send_msg[pair_canfdinfo.first]=pair_canfdinfo.second;
+    }
+    return !this->forwarding_send_msg.empty();
+}
+
+void CircularRotationBuffer::caluculateEndToEndDalay(){
+    /*
+        @param: canfdinfo_vec中存储的报文到达信息
+        实现方法 根据论文公式，计算端到端时延
+                r_{e2e}(m_i)=r_{e2g}(m_i)+r_{en}(m_i)+r_{g2g}(m_i)+r_{de}(m_i)+r_{g2e}(m_i)
+            其中$r_{e2g}(m_i)$和$r_{g2e}(m_i)$通过WCRT分析计算
+            剩下三个统一为->    (\zeta+3)*T_CQF + \deleta
+            其中\deleta是GW的处理时延
+    */
+   for(auto canfdinfo_vec:this->canfdinfo_vector){       
+        canfdinfo_vec.remaining_Deadline = canfdinfo_vec.D_i-canfdinfo_vec.wcrt-(canfdinfo_vec.zeta + 3) * this->timeout * 1e3;
+   }
+}
+
+
+} //namespace

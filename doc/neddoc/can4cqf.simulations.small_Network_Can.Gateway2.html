@@ -1,0 +1,381 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Compound Module <i>Gateway2</i></h2>
+<b>Package:</b> can4cqf.simulations.small_Network_Can<br/><b>File: <a href="simulations-small_Network_Can-gateway2.ned.html">simulations/small_Network_Can/gateway2.ned</a></b><br/><p>(no description)</p><img src="can4cqf.simulations.small_Network_Can.Gateway2-type.png" ismap="yes" usemap="#type-diagram"/><map name="type-diagram">
+<area shape="rect" href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html" title="CanGatewayNode" alt="CanGatewayNode" coords="383,117,542,178">
+<area shape="rect" href="can4cqf.can4cqf.applications.ethernet.IEthernetGatewayHost.html" title="IEthernetGatewayHost" alt="IEthernetGatewayHost" coords="5,117,186,178">
+<area shape="rect" href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.GatewayBase.html" title="GatewayBase" alt="GatewayBase" coords="250,124,306,171">
+</map>
+<h3 class="subtitle">Usage diagram:</h3>
+<p>The following diagram shows usage relationships between types.
+Unresolved types are missing from the diagram. Click <a href="full-ned-usage-diagram.html">here</a> to see the full picture.</p>
+<img src="can4cqf.simulations.small_Network_Can.Gateway2-usage.png" ismap="yes" usemap="#usage-diagram"/><map name="usage-diagram"><area shape="rect" id="node1" href="can4cqf.simulations.small_Network_Can.Gateway2.html" title="Compound Module Gateway2" alt="" coords="36,79,117,104">
+<area shape="rect" id="node2" href="can4cqf.simulations.small_Network_Can.Small_Network_Can.html" title="Network Small_Network_Can" alt="" coords="5,5,148,31">
+</map>
+<h3 class="subtitle">Inheritance diagram:</h3>
+<p>The following diagram shows inheritance relationships for this type.
+Unresolved types are missing from the diagram. Click <a href="full-ned-inheritance-diagram.html">here</a> to see the full picture.</p>
+<img src="can4cqf.simulations.small_Network_Can.Gateway2-inheritance.png" ismap="yes" usemap="#inheritance-diagram"/><map name="inheritance-diagram"><area shape="rect" id="node1" href="can4cqf.simulations.small_Network_Can.Gateway2.html" title="Compound Module Gateway2" alt="" coords="69,79,151,104">
+<area shape="rect" id="node2" href="can4cqf.can4cqf.gateway.CANBusIEEE8021QchGateway.html" title="Compound Module CANBusIEEE8021QchGateway" alt="" coords="5,5,215,31">
+</map>
+<h3 class="subtitle">Extends:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="can4cqf.can4cqf.gateway.CANBusIEEE8021QchGateway.html">CANBusIEEE8021QchGateway</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+
+<p>目的：引入CQF作为以太网的&ldquo;终端&rdquo;，该gateway由三部分组成：CanNode,transformation,TSN module; CanNode应该是不用改的，tran..是后面
+需要大改的部分。我想使用CQF作为确定性传输机制，所以</p>
+
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Networks:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="can4cqf.simulations.small_Network_Can.Small_Network_Can.html">Small_Network_Can</a>
+   </td>
+   <td>
+<i>network</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="defaultvalue">Default value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="inherited">
+   <td>countOfCanBusses</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>1</td>
+   <td>
+<p>Number of CAN bus ports</p>
+   </td>
+</tr>
+<tr class="inherited">
+   <td>countOfEthernetPorts</td>
+   <td>
+      <i>int</i>
+   </td>
+   <td>1</td>
+   <td>
+<p>Number of Ethernet ports</p>
+   </td>
+</tr>
+<tr class="inherited">
+   <td>gatewayID</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"auto"</td>
+   <td>
+<p>Gateway ID in gateway config file. If auto or empty the gateway module name will be used.</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Properties:</h3>
+<table class="propertiestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="value">Value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>display</td>
+   <td><i>i=block/layer;bgb=548,231</i></td>
+   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="gatestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Direction</th>
+      <th class="gatesize">Size</th>
+      <th class="description">Description</th>
+   </tr>
+<tr class="inherited">
+   <td>ethg [ ]</xsl:if></td>
+   <td><i>inout</i></td>
+   <td>countOfEthernetPorts</td>   <td>
+<p>ethernet connection</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td>cang [ ]</xsl:if></td>
+   <td><i>inout</i></td>
+   <td>countOfCanBusses</td>   <td>
+<p>bus connection</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Unassigned submodule parameters:</h3>
+<table class="deepparamstable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="defaultvalue">Default value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../FiCo4OMNeT/doc/neddoc/fico4omnet.buffer.can.CanInputBuffer.html">bufferIn</a>.destination_gates</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"sinkApp[0].dataIn"</td>
+   <td>
+<p>Comma seperated list of gates where the frames of the buffer are delivered</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../FiCo4OMNeT/doc/neddoc/fico4omnet.buffer.can.CanInputBuffer.html">bufferIn</a>.MOB</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>true</td>
+   <td>
+<p>If true frames with the same ID will be overwritten.</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../FiCo4OMNeT/doc/neddoc/fico4omnet.buffer.can.CanInputBuffer.html">bufferIn</a>.idIncomingFrames</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>The Incoming Frame ID(s) - String parameter (int) separated with commas</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../FiCo4OMNeT/doc/neddoc/fico4omnet.buffer.can.CanOutputBuffer.html">bufferOut</a>.destination_gates</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>""</td>
+   <td>
+<p>Comma seperated list of gates where the frames of the buffer are delivered</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanSourceGatewayApp.html">sourceApp</a>.idDataFrames</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>The Data Frames ID(s) - String parameter (int) separated with commas</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanSourceGatewayApp.html">sourceApp</a>.periodicityDataFrames</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>data Frame period(s) for sending of messages - String parameter (int) separated with commas - unit: s</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanSourceGatewayApp.html">sourceApp</a>.dataLengthDataFrames</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>Datafield-length - String parameter (int) separated with commas - unit: byte</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanSourceGatewayApp.html">sourceApp</a>.initialDataFrameOffset</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>Offset for the first transmission of the data frames - String parameter (double) separated with commas - unit: s</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanSourceGatewayApp.html">sourceApp</a>.idRemoteFrames</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>The Remote Frame ID(s) - String parameter (int) separated with commas</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanSourceGatewayApp.html">sourceApp</a>.periodicityRemoteFrames</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>Remote Frame period(s) for sending of messages - String parameter (int) separated with commas - unit: s</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanSourceGatewayApp.html">sourceApp</a>.dataLengthRemoteFrames</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>Datafield-length - String parameter (int) separated with commas - unit: byte</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanSourceGatewayApp.html">sourceApp</a>.initialRemoteFrameOffset</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td>"0"</td>
+   <td>
+<p>Offset for the first transmission of the remote frames - String parameter (double) separated with commas - unit: s</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanSourceGatewayApp.html">sourceApp</a>.periodInaccurracy</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0s</td>
+   <td>
+<p>Inaccuracy for the node which is added to the schedule time for each frame.</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../FiCo4OMNeT/doc/neddoc/fico4omnet.scheduler.can.CanClock.html">canClock</a>.maxDrift</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0s</td>
+   <td>
+<p>Maximum drift per second</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../FiCo4OMNeT/doc/neddoc/fico4omnet.scheduler.can.CanClock.html">canClock</a>.maxDriftChange</td>
+   <td>
+      <i>double</i>
+   </td>
+   <td>0s</td>
+   <td>
+<p>Maximum drift change per second</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.applications.can.CanGatewayNode.html">can</a>.<a href="../../../FiCo4OMNeT/doc/neddoc/fico4omnet.scheduler.can.CanClock.html">canClock</a>.randomStartDrift</td>
+   <td>
+      <i>bool</i>
+   </td>
+   <td>true</td>
+   <td>
+<p>True if the node should have a random drift at the start of the simulation, false otherwise.</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.GatewayBase.html">gateway</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.routing.IGatewayRouter.html">router</a>.configXML</td>
+   <td>
+      <i>xml</i>
+   </td>
+   <td>defaultConfigXML</td>
+   <td>
+<p>Path of the gateway configuration xml file</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.GatewayBase.html">gateway</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.routing.IGatewayRouter.html">router</a>.gatewayID</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td></td>
+   <td>
+<p>Gateway ID in gateway config file. If auto or empty the gateway module name will be used.</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.GatewayBase.html">gateway</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.transformation.IGatewayTransformation.html">transform</a>.configXML</td>
+   <td>
+      <i>xml</i>
+   </td>
+   <td>defaultConfigXML</td>
+   <td>
+<p>Path of the gateway configuration xml file</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.GatewayBase.html">gateway</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.transformation.IGatewayTransformation.html">transform</a>.gatewayID</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td></td>
+   <td>
+<p>Gateway ID in gateway config file. If auto or empty the gateway module name will be used.</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.GatewayBase.html">gateway</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.buffering.IGatewayBuffering.html">buffering</a>.configXML</td>
+   <td>
+      <i>xml</i>
+   </td>
+   <td>defaultConfigXML</td>
+   <td>
+<p>Path of the gateway configuration xml file</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.GatewayBase.html">gateway</a>.<a href="../../../SignalsAndGateways/doc/neddoc/signalsandgateways.gateway.buffering.IGatewayBuffering.html">buffering</a>.gatewayID</td>
+   <td>
+      <i>string</i>
+   </td>
+   <td></td>
+   <td>
+<p>Gateway ID in gateway config file. If auto or empty the gateway module name will be used.</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">Gateway2</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">CANBusIEEE8021QchGateway</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; ">:
+}
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>

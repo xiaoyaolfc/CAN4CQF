@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="/home/xiaoyao/English_Path/omnetpp-5.5.1/doc/api/opptags.xml$classomnetpp_1_1cObject.html" title="omnetpp::cObject" alt="" coords="5,5,131,32"/>
+<area shape="rect" id="node2" href="/home/xiaoyao/English_Path/omnetpp-5.5.1/doc/api/opptags.xml$classomnetpp_1_1cNamedObject.html" title="omnetpp::cNamedObject" alt="" coords="179,5,345,32"/>
+<area shape="rect" id="node3" href="/home/xiaoyao/English_Path/omnetpp-5.5.1/doc/api/opptags.xml$classomnetpp_1_1cOwnedObject.html" title="omnetpp::cOwnedObject" alt="" coords="393,5,560,32"/>
+<area shape="rect" id="node4" href="/home/xiaoyao/English_Path/omnetpp-5.5.1/doc/api/opptags.xml$classomnetpp_1_1cEvent.html" title="omnetpp::cEvent" alt="" coords="608,5,729,32"/>
+<area shape="rect" id="node5" href="/home/xiaoyao/English_Path/omnetpp-5.5.1/doc/api/opptags.xml$classomnetpp_1_1cMessage.html" title="omnetpp::cMessage" alt="" coords="777,5,917,32"/>
+<area shape="rect" id="node6" href="/home/xiaoyao/English_Path/omnetpp-5.5.1/doc/api/opptags.xml$classomnetpp_1_1cPacket.html" title="omnetpp::cPacket" alt="" coords="965,5,1093,32"/>
+<area shape="rect" id="node7" href="$classCAN4CQF_1_1PoolMessage.html" title="Class generated from can4cqf/linklayer/message/PoolMessage.msg:26 by nedtool. " alt="" coords="1141,5,1315,32"/>
+</map>

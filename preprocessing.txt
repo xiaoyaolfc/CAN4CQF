@@ -1,0 +1,6 @@
+sed -i '578,579d' General-#0.
+
+针对_same_period的预处理
+sed -i '619,620d' General-#0.vec 
+
+还需要注意一点，即每次下载依赖库时，别忘记将依赖库的名字后面的-master删除，保持为原本的名字，例如CoRE4INET，才能使用！！！

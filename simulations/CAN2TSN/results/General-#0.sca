@@ -1,0 +1,4284 @@
+version 2
+run General-0-20241128-21:42:13-22245
+attr configname General
+attr datetime 20241128-21:42:13
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network can4cqf.simulations.CAN2TSN.Can2tsn
+attr processid 22245
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.gateway.bufferingDelay 1us
+param **.gateway.transformDelay 2us
+param **.canBus1.bandwidth 2Mbps
+param **.canBus2.bandwidth 2Mbps
+param **.addressTableFile "\"addressTable.txt\""
+param **.scheduler.tick 100ns
+param **.scheduler.numPeriods 1
+param **.scheduler.period[0].cycle_ticks sec_to_tick(4s)
+param **.scheduler.period[0].offset_ticks sec_to_tick(0ms)
+param **.scheduler.oscillator.max_drift 200ppm
+param **.scheduler.oscillator.drift_change uniform(-50ppm,50ppm)
+param **.precission 500ns
+param **.gateway1.can[*].bufferIn[*].idIncomingFrames "\"1\""
+param **.gateway1.can[*].bufferIn[*].destination_gates "\"sinkApp[0].dataIn\""
+param **.gateway1.tsn[*].phy[*].mac.address "\"0A-00-00-00-00-07\""
+param **.gateway1.tsn[*].bgIn.destination_gates "\"gatewayApp.in\""
+param **.gateway1.tsn[*].gatewayApp.buffers "\"bgOut\""
+param **.gateway1.tsn[*].phy[*].shaper.transmissionSelectionAlgorithm[*].typename "\"IEEE8021QbvSelectionAlgorithm\""
+param **.gateway2.can[*].bufferIn[*].idIncomingFrames "\"1\""
+param **.gateway2.can[*].bufferIn[*].destination_gates "\"sinkApp[0].dataIn\""
+param **.gateway2.tsn[*].phy[*].mac.address "\"0A-00-00-00-00-08\""
+param **.gateway2.tsn[*].bgIn.destination_gates "\"gatewayApp.in\""
+param **.gateway2.tsn[*].gatewayApp.buffers "\"bgOut\""
+param **.gateway2.countOfCanBusses 1
+param **.gateway2.countOfEthernetPorts 1
+param **.gateway2.tsn[*].phy[*].taggedVIDs "\"0,1\""
+param **.gateway2.tsn[*].phy[*].untaggedVID 0
+param **.gateway2.tsn[*].phy[*].shaper.transmissionSelectionAlgorithm[*].typename "\"IEEE8021QbvSelectionAlgorithm\""
+param **.switch1.phy[0].mac.address "\"0A-00-00-00-00-01\""
+param **.switch1.phy[1].mac.address "\"0A-00-00-00-00-02\""
+param **.switch1.phy[*].shaper.transmissionSelectionAlgorithm[*].typename "\"IEEE8021QbvSelectionAlgorithm\""
+param **.switch1.phy[0].untaggedVID 0
+param **.switch1.phy[0].taggedVIDs "\"0,1\""
+param **.switch1.phy[1].untaggedVID 0
+param **.switch1.phy[1].taggedVIDs "\"0,1\""
+param **.switch2.phy[0].mac.address "\"0A-00-00-00-00-03\""
+param **.switch2.phy[1].mac.address "\"0A-00-00-00-00-04\""
+param **.switch2.phy[*].shaper.transmissionSelectionAlgorithm[*].typename "\"IEEE8021QbvSelectionAlgorithm\""
+param **.switch2.phy[0].untaggedVID 0
+param **.switch2.phy[0].taggedVIDs "\"0,1\""
+param **.switch2.phy[1].untaggedVID 0
+param **.switch2.phy[1].taggedVIDs "\"0,1\""
+param **.version "\"2.0B\""
+param **.canNode1.numSourceApps 1
+param **.canNode1.sourceApp[0].idDataFrames "\"1\""
+param **.canNode1.sourceApp[0].periodicityDataFrames "\"0.01\""
+param **.canNode1.sourceApp[0].initialDataFrameOffset "\"0\""
+param **.canNode1.sourceApp[0].dataLengthDataFrames "\"64\""
+param **.canNode11.numSinkApps 1
+param **.canNode11.numInputBuffer 1
+param **.canNode11.bufferIn[0].destination_gates "\"sinkApp[0].dataIn\""
+param **.canNode11.bufferIn[0].idIncomingFrames "\"1\""
+param **.transmissionSelectionAlgorithm[*].typename "\"IEEE8021QbvSelectionAlgorithm\""
+param **.configXML "xmldoc(\"GatewayConfig.xml\")"
+param **.gateway.buffering[*].typename "\"CircularRotationBuffer\""
+param **.gateway.transform[*].typename "\"VarGatewayTransformation\""
+param **.gateway.buffering[*].timeout 100us
+param **.gateway.buffering[*].lamda 0.6
+
+statistic Can2tsn.canBus1.canBusLogic arbitrationLength:stats
+field count 401
+field mean 0.50124688279302
+field stddev 0.50062305320122
+field min 0
+field max 1
+field sum 201
+field sqrsum 201
+attr interpolationmode sample-hold
+attr source arbitrationLength
+attr title "Arbitration Length, stats"
+attr unit packets
+scalar Can2tsn.canBus1.canBusLogic utilization:last 2.9
+attr source lowHighRatio(state)*100
+attr title "Utilization, last"
+attr unit %
+scalar Can2tsn.canBus1.canBusLogic rxEF:count 0
+attr interpolationmode none
+attr source rxEF
+attr title "error frames received, count"
+scalar Can2tsn.canBus1.canBusLogic rxRF:count 0
+attr interpolationmode none
+attr source rxRF
+attr title "remote frames received, count"
+scalar Can2tsn.canBus1.canBusLogic rxDF:count 200
+attr interpolationmode none
+attr source rxDF
+attr title "data frames received, count"
+scalar Can2tsn.canBus1.canBusLogic framesPerSec:last 100.50248731093
+attr source sumPerDuration(constant1(rxPk))
+attr title "Frames/sec, last"
+attr unit fps
+scalar Can2tsn.canBus1.canBusLogic bitsPerSec:last 58190.94015303
+attr source sumPerDuration(packetBits(rxPk))
+attr title "Bits/sec, last"
+attr unit bps
+statistic Can2tsn.canNode1.canNodePort.canPortInput rxRFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, stats"
+attr unit s
+statistic Can2tsn.canNode1.canNodePort.canPortInput rxDFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, stats"
+attr unit s
+scalar Can2tsn.canNode1.canNodePort.canPortInput rxRF:count 0
+attr source rxRF
+attr title "complete remote frames received, count"
+statistic Can2tsn.canNode1.canNodePort.canPortInput rxRFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRF)
+attr title "End-to-end latency of remote frames, stats"
+attr unit s
+scalar Can2tsn.canNode1.canNodePort.canPortInput rxDF:count 0
+attr source rxDF
+attr title "complete data frames received, count"
+statistic Can2tsn.canNode1.canNodePort.canPortInput rxDFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDF)
+attr title "End-to-end latency of data frames, stats"
+attr unit s
+scalar Can2tsn.canNode1.canNodePort.canPortOutput txEF:count 0
+attr source txEF
+attr title "sent errors, count"
+scalar Can2tsn.canNode1.canNodePort.canPortOutput txRF:count 0
+attr source txRF
+attr title "sent remote frames, count"
+scalar Can2tsn.canNode1.canNodePort.canPortOutput txDF:count 200
+attr source txDF
+attr title "sent data frames, count"
+scalar Can2tsn.canNode1.canNodePort.canPortOutput rxEF:count 0
+attr source rxEF
+attr title "receive errors, count"
+statistic Can2tsn.canNode1.bufferIn[0] size:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source size
+attr title "Queue Size, stats"
+attr unit B
+statistic Can2tsn.canNode1.bufferIn[0] length:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source length
+attr title "Queue Length, stats"
+attr unit packets
+scalar Can2tsn.canNode1.bufferIn[0] rxPk:count 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, count"
+scalar Can2tsn.canNode1.bufferIn[0] rxPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, sum(packetBytes)"
+scalar Can2tsn.canNode1.bufferIn[0] txPk:count 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, count"
+scalar Can2tsn.canNode1.bufferIn[0] txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, sum(packetBytes)"
+statistic Can2tsn.canNode1.bufferOut size:stats
+field count 401
+field mean 36.59102244389
+field stddev 36.545482883689
+field min 0
+field max 73
+field sum 14673
+field sqrsum 1071129
+attr interpolationmode sample-hold
+attr source size
+attr title "Queue Size, stats"
+attr unit B
+statistic Can2tsn.canNode1.bufferOut length:stats
+field count 401
+field mean 0.50124688279302
+field stddev 0.50062305320122
+field min 0
+field max 1
+field sum 201
+field sqrsum 201
+attr interpolationmode sample-hold
+attr source length
+attr title "Queue Length, stats"
+attr unit packets
+scalar Can2tsn.canNode1.bufferOut rxPk:count 402
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, count"
+scalar Can2tsn.canNode1.bufferOut rxPk:sum(packetBytes) 29346
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, sum(packetBytes)"
+scalar Can2tsn.canNode1.bufferOut txPk:count 200
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, count"
+scalar Can2tsn.canNode1.bufferOut txPk:sum(packetBytes) 14600
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, sum(packetBytes)"
+scalar Can2tsn.canNode1.sourceApp[0] txRF:count 0
+attr source txRF
+attr title "source app remote frame, count"
+scalar Can2tsn.canNode1.sourceApp[0] txDF:count 201
+attr source txDF
+attr title "source app data frame, count"
+statistic Can2tsn.canNode1.sinkApp[0] rxRFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, stats"
+attr unit s
+statistic Can2tsn.canNode1.sinkApp[0] rxRFPayloadLatency:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Can2tsn.canNode1.sinkApp[0] rxDFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, stats"
+attr unit s
+statistic Can2tsn.canNode1.sinkApp[0] rxDFPayloadLatency:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Can2tsn.canNode1.sinkApp[0] rxRF:count 0
+attr source rxRF
+attr title "sink app remote frame, count"
+statistic Can2tsn.canNode1.sinkApp[0] rxRFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRF)
+attr title "End-to-end latency of remote frames, stats"
+attr unit s
+scalar Can2tsn.canNode1.sinkApp[0] rxDF:count 0
+attr source rxDF
+attr title "sink app data frame, count"
+statistic Can2tsn.canNode1.sinkApp[0] rxDFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDF)
+attr title "End-to-end latency of data frames, stats"
+attr unit s
+statistic Can2tsn.canNode1.canClock clockDrift:stats
+field count 202
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source clockDrift
+attr title "clockDrift, stats"
+attr unit s
+statistic Can2tsn.gateway1.can[0].canNodePort.canPortInput rxRFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, stats"
+attr unit s
+statistic Can2tsn.gateway1.can[0].canNodePort.canPortInput rxDFPayloadLatency:stats
+field count 200
+field mean 0.00029
+field stddev 2.3341491218521e-11
+field min 0.00029
+field max 0.00029
+field sum 0.058
+field sqrsum 1.682e-05
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, stats"
+attr unit s
+scalar Can2tsn.gateway1.can[0].canNodePort.canPortInput rxRF:count 0
+attr source rxRF
+attr title "complete remote frames received, count"
+statistic Can2tsn.gateway1.can[0].canNodePort.canPortInput rxRFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRF)
+attr title "End-to-end latency of remote frames, stats"
+attr unit s
+scalar Can2tsn.gateway1.can[0].canNodePort.canPortInput rxDF:count 200
+attr source rxDF
+attr title "complete data frames received, count"
+statistic Can2tsn.gateway1.can[0].canNodePort.canPortInput rxDFLatency:stats
+field count 200
+field mean 0.00029
+field stddev 2.3341491218521e-11
+field min 0.00029
+field max 0.00029
+field sum 0.058
+field sqrsum 1.682e-05
+attr interpolationmode linear
+attr source timestampAge(rxDF)
+attr title "End-to-end latency of data frames, stats"
+attr unit s
+scalar Can2tsn.gateway1.can[0].canNodePort.canPortOutput txEF:count 0
+attr source txEF
+attr title "sent errors, count"
+scalar Can2tsn.gateway1.can[0].canNodePort.canPortOutput txRF:count 0
+attr source txRF
+attr title "sent remote frames, count"
+scalar Can2tsn.gateway1.can[0].canNodePort.canPortOutput txDF:count 0
+attr source txDF
+attr title "sent data frames, count"
+scalar Can2tsn.gateway1.can[0].canNodePort.canPortOutput rxEF:count 0
+attr source rxEF
+attr title "receive errors, count"
+statistic Can2tsn.gateway1.can[0].bufferIn[0] size:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source size
+attr title "Queue Size, stats"
+attr unit B
+statistic Can2tsn.gateway1.can[0].bufferIn[0] length:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source length
+attr title "Queue Length, stats"
+attr unit packets
+scalar Can2tsn.gateway1.can[0].bufferIn[0] rxPk:count 200
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, count"
+scalar Can2tsn.gateway1.can[0].bufferIn[0] rxPk:sum(packetBytes) 14600
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, sum(packetBytes)"
+scalar Can2tsn.gateway1.can[0].bufferIn[0] txPk:count 200
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, count"
+scalar Can2tsn.gateway1.can[0].bufferIn[0] txPk:sum(packetBytes) 14600
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, sum(packetBytes)"
+statistic Can2tsn.gateway1.can[0].bufferOut size:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source size
+attr title "Queue Size, stats"
+attr unit B
+statistic Can2tsn.gateway1.can[0].bufferOut length:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source length
+attr title "Queue Length, stats"
+attr unit packets
+scalar Can2tsn.gateway1.can[0].bufferOut rxPk:count 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, count"
+scalar Can2tsn.gateway1.can[0].bufferOut rxPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, sum(packetBytes)"
+scalar Can2tsn.gateway1.can[0].bufferOut txPk:count 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, count"
+scalar Can2tsn.gateway1.can[0].bufferOut txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, sum(packetBytes)"
+scalar Can2tsn.gateway1.can[0].sourceApp[0] txRF:count 0
+attr source txRF
+attr title "source app remote frame, count"
+scalar Can2tsn.gateway1.can[0].sourceApp[0] txDF:count 0
+attr source txDF
+attr title "source app data frame, count"
+statistic Can2tsn.gateway1.can[0].sinkApp[0] rxRFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, stats"
+attr unit s
+statistic Can2tsn.gateway1.can[0].sinkApp[0] rxRFPayloadLatency:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Can2tsn.gateway1.can[0].sinkApp[0] rxDFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, stats"
+attr unit s
+statistic Can2tsn.gateway1.can[0].sinkApp[0] rxDFPayloadLatency:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Can2tsn.gateway1.can[0].sinkApp[0] rxRF:count 0
+attr source rxRF
+attr title "sink app remote frame, count"
+statistic Can2tsn.gateway1.can[0].sinkApp[0] rxRFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRF)
+attr title "End-to-end latency of remote frames, stats"
+attr unit s
+scalar Can2tsn.gateway1.can[0].sinkApp[0] rxDF:count 0
+attr source rxDF
+attr title "sink app data frame, count"
+statistic Can2tsn.gateway1.can[0].sinkApp[0] rxDFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDF)
+attr title "End-to-end latency of data frames, stats"
+attr unit s
+statistic Can2tsn.gateway1.can[0].canClock clockDrift:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source clockDrift
+attr title "clockDrift, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[0] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[0] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[0] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[0] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[0] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[1] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[1] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[1] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[1] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[1] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[2] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[2] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[2] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[2] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[2] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[3] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[3] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[3] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[3] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[3] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[4] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[4] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[4] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[4] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[4] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[5] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[5] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[5] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[5] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[5] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[6] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[6] rxPk:count 200
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[6] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[6] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[6] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[7] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[7] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[7] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[7] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.queue[7] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp0 frames/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp0 bits/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp1 frames/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp1 bits/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp2 frames/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp2 bits/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp3 frames/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp3 bits/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp4 frames/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp4 bits/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp5 frames/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp5 bits/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp6 frames/sec" 100
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp6 bits/sec" 51200
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp7 frames/sec" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection "qPcp7 bits/sec" 0
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp7Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp7Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp7Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp6Latency:stats
+field count 201
+field mean 0.00019803631840796
+field stddev 1.4038316294272e-05
+field min 0
+field max 0.0001991
+field sum 0.0398053
+field sqrsum 7.92230993e-06
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp6Pk:count 201
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp6Bytes:sum(packetBytes) 12800
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp5Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp5Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp5Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp4Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp4Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp4Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp3Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp3Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp3Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp2Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp2Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp2Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp1Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp1Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp1Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp0Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp0Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].phy[0].shaper.transmissionSelection qPcp0Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].phy[0].inControl rxLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency (received), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac "simulated time" 2
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac full-duplex 1
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac "frames/sec sent" 100
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac "frames/sec rcvd" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac "bits/sec sent" 51200
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac "bits/sec rcvd" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac "rx channel idle (%)" 100
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac "rx channel utilization (%)" 0
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac droppedPkNotForUs:count 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, count"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac droppedPkNotForUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, sum(packetBytes)"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac droppedPkIfaceDown:count 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, count"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac droppedPkIfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, sum(packetBytes)"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac droppedPkBitError:count 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, count"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac droppedPkBitError:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, sum(packetBytes)"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac rxPkFromHL:count 200
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, count"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac rxPkFromHL:sum(packetBytes) 12800
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac rxPkOk:count 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac txPk:count 200
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, count"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac txPk:sum(packetBytes) 12800
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, sum(packetBytes)"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Can2tsn.gateway1.tsn[0].phy[0].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar Can2tsn.gateway1.tsn[0].avbCTC dropped:count 0
+attr source droppedPk
+attr title "Packets Dropped, count"
+scalar Can2tsn.gateway1.tsn[0].avbCTC rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+statistic Can2tsn.gateway1.tsn[0].avbCTC latency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar Can2tsn.gateway1.tsn[0].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar Can2tsn.gateway1.tsn[0].encap decapPk:count 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar Can2tsn.gateway1.tsn[0].encap decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar Can2tsn.gateway1.tsn[0].encap encapPk:count 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar Can2tsn.gateway1.tsn[0].encap encapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar Can2tsn.gateway1.tsn[0].scheduler.period[0] numberOfCycles:count 0
+attr interpolationmode none
+attr source newCycle
+attr title "Number of cycle, count"
+scalar Can2tsn.gateway1.tsn[0].bgIn dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].bgIn rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].bgIn txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].bgIn txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].bgIn txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.tsn[0].bgOut dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].bgOut rxPk:count 200
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].bgOut txPk:count 200
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway1.tsn[0].bgOut txBytes:sum(packetBytes) 12800
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway1.tsn[0].bgOut txLatency:stats
+field count 200
+field mean 2e-06
+field stddev 9.9358595129954e-14
+field min 2e-06
+field max 2e-06
+field sum 0.0004
+field sqrsum 8e-10
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway1.gateway.router dropped:count 0
+attr interpolationmode none
+attr source droppedFramesSignal
+attr title "dropped frames, count"
+scalar Can2tsn.switch1.beswitch "number of received BPDUs from STP module" 0
+scalar Can2tsn.switch1.beswitch "number of received frames from network (including BPDUs)" 200
+scalar Can2tsn.switch1.beswitch "number of dropped frames (including BPDUs)" 0
+scalar Can2tsn.switch1.beswitch "number of delivered BPDUs to the STP module" 0
+scalar Can2tsn.switch1.beswitch "number of dispatched BPDU frames to the network" 0
+scalar Can2tsn.switch1.beswitch "number of dispatched non-BDPU frames to the network" 200
+scalar Can2tsn.switch1.phy[0].shaper.queue[0] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[0] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[0] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[0] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.queue[0] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.queue[1] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[1] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[1] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[1] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.queue[1] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.queue[2] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[2] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[2] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[2] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.queue[2] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.queue[3] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[3] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[3] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[3] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.queue[3] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.queue[4] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[4] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[4] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[4] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.queue[4] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.queue[5] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[5] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[5] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[5] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.queue[5] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.queue[6] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[6] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[6] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[6] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.queue[6] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.queue[7] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[7] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[7] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.queue[7] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.queue[7] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp0 frames/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp0 bits/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp1 frames/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp1 bits/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp2 frames/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp2 bits/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp3 frames/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp3 bits/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp4 frames/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp4 bits/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp5 frames/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp5 bits/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp6 frames/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp6 bits/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp7 frames/sec" 0
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection "qPcp7 bits/sec" 0
+statistic Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp7Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp7Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp7Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp6Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp6Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp6Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp5Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp5Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp5Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp4Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp4Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp4Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp3Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp3Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp3Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp2Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp2Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp2Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp1Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp1Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp1Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp0Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp0Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[0].shaper.transmissionSelection qPcp0Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[0].inControl rxLatency:stats
+field count 200
+field mean 0.0001996025
+field stddev 4.4244069535687e-08
+field min 0.000199576
+field max 0.000199676
+field sum 0.0399205
+field sqrsum 7.9682319908e-06
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency (received), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[0].mac "simulated time" 2
+scalar Can2tsn.switch1.phy[0].mac full-duplex 1
+scalar Can2tsn.switch1.phy[0].mac "frames/sec sent" 0
+scalar Can2tsn.switch1.phy[0].mac "frames/sec rcvd" 100
+scalar Can2tsn.switch1.phy[0].mac "bits/sec sent" 0
+scalar Can2tsn.switch1.phy[0].mac "bits/sec rcvd" 51200
+scalar Can2tsn.switch1.phy[0].mac "rx channel idle (%)" 99.99424
+scalar Can2tsn.switch1.phy[0].mac "rx channel utilization (%)" 0.00576
+scalar Can2tsn.switch1.phy[0].mac droppedPkNotForUs:count 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, count"
+scalar Can2tsn.switch1.phy[0].mac droppedPkNotForUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[0].mac droppedPkIfaceDown:count 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, count"
+scalar Can2tsn.switch1.phy[0].mac droppedPkIfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[0].mac droppedPkBitError:count 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, count"
+scalar Can2tsn.switch1.phy[0].mac droppedPkBitError:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[0].mac rxPkFromHL:count 0
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, count"
+scalar Can2tsn.switch1.phy[0].mac rxPkFromHL:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar Can2tsn.switch1.phy[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar Can2tsn.switch1.phy[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar Can2tsn.switch1.phy[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar Can2tsn.switch1.phy[0].mac rxPkOk:count 200
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar Can2tsn.switch1.phy[0].mac rxPkOk:sum(packetBytes) 12800
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[0].mac txPk:count 0
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, count"
+scalar Can2tsn.switch1.phy[0].mac txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[0].mac passedUpPk:count 200
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Can2tsn.switch1.phy[0].mac passedUpPk:sum(packetBytes) 12800
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[1].shaper.queue[0] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[0] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[0] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[0] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.queue[0] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.queue[1] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[1] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[1] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[1] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.queue[1] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.queue[2] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[2] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[2] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[2] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.queue[2] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.queue[3] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[3] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[3] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[3] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.queue[3] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.queue[4] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[4] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[4] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[4] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.queue[4] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.queue[5] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[5] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[5] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[5] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.queue[5] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.queue[6] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[6] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[6] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[6] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.queue[6] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.queue[7] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[7] rxPk:count 200
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[7] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.queue[7] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.queue[7] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp0 frames/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp0 bits/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp1 frames/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp1 bits/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp2 frames/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp2 bits/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp3 frames/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp3 bits/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp4 frames/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp4 bits/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp5 frames/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp5 bits/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp6 frames/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp6 bits/sec" 0
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp7 frames/sec" 100
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection "qPcp7 bits/sec" 51200
+statistic Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp7Latency:stats
+field count 201
+field mean 0.00039704278606965
+field stddev 2.8145300854676e-05
+field min 0
+field max 0.0003991
+field sum 0.0798056
+field sqrsum 3.184466936e-05
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp7Pk:count 201
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp7Bytes:sum(packetBytes) 12800
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp6Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp6Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp6Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp5Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp5Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp5Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp4Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp4Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp4Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp3Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp3Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp3Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp2Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp2Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp2Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp1Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp1Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp1Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp0Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp0Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch1.phy[1].shaper.transmissionSelection qPcp0Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch1.phy[1].inControl rxLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency (received), stats"
+attr unit s
+scalar Can2tsn.switch1.phy[1].mac "simulated time" 2
+scalar Can2tsn.switch1.phy[1].mac full-duplex 1
+scalar Can2tsn.switch1.phy[1].mac "frames/sec sent" 100
+scalar Can2tsn.switch1.phy[1].mac "frames/sec rcvd" 0
+scalar Can2tsn.switch1.phy[1].mac "bits/sec sent" 51200
+scalar Can2tsn.switch1.phy[1].mac "bits/sec rcvd" 0
+scalar Can2tsn.switch1.phy[1].mac "rx channel idle (%)" 100
+scalar Can2tsn.switch1.phy[1].mac "rx channel utilization (%)" 0
+scalar Can2tsn.switch1.phy[1].mac droppedPkNotForUs:count 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, count"
+scalar Can2tsn.switch1.phy[1].mac droppedPkNotForUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[1].mac droppedPkIfaceDown:count 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, count"
+scalar Can2tsn.switch1.phy[1].mac droppedPkIfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[1].mac droppedPkBitError:count 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, count"
+scalar Can2tsn.switch1.phy[1].mac droppedPkBitError:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[1].mac rxPkFromHL:count 200
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, count"
+scalar Can2tsn.switch1.phy[1].mac rxPkFromHL:sum(packetBytes) 12800
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar Can2tsn.switch1.phy[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar Can2tsn.switch1.phy[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar Can2tsn.switch1.phy[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar Can2tsn.switch1.phy[1].mac rxPkOk:count 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar Can2tsn.switch1.phy[1].mac rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[1].mac txPk:count 200
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, count"
+scalar Can2tsn.switch1.phy[1].mac txPk:sum(packetBytes) 12800
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, sum(packetBytes)"
+scalar Can2tsn.switch1.phy[1].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Can2tsn.switch1.phy[1].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar Can2tsn.switch1.avbCTC dropped:count 0
+attr source droppedPk
+attr title "Packets Dropped, count"
+scalar Can2tsn.switch1.avbCTC rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+statistic Can2tsn.switch1.avbCTC latency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch1.scheduler.period[0] numberOfCycles:count 0
+attr interpolationmode none
+attr source newCycle
+attr title "Number of cycle, count"
+scalar Can2tsn.switch2.beswitch "number of received BPDUs from STP module" 0
+scalar Can2tsn.switch2.beswitch "number of received frames from network (including BPDUs)" 200
+scalar Can2tsn.switch2.beswitch "number of dropped frames (including BPDUs)" 0
+scalar Can2tsn.switch2.beswitch "number of delivered BPDUs to the STP module" 0
+scalar Can2tsn.switch2.beswitch "number of dispatched BPDU frames to the network" 0
+scalar Can2tsn.switch2.beswitch "number of dispatched non-BDPU frames to the network" 200
+scalar Can2tsn.switch2.phy[0].shaper.queue[0] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[0] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[0] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[0] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.queue[0] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.queue[1] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[1] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[1] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[1] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.queue[1] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.queue[2] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[2] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[2] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[2] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.queue[2] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.queue[3] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[3] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[3] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[3] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.queue[3] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.queue[4] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[4] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[4] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[4] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.queue[4] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.queue[5] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[5] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[5] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[5] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.queue[5] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.queue[6] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[6] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[6] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[6] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.queue[6] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.queue[7] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[7] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[7] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.queue[7] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.queue[7] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp0 frames/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp0 bits/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp1 frames/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp1 bits/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp2 frames/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp2 bits/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp3 frames/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp3 bits/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp4 frames/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp4 bits/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp5 frames/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp5 bits/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp6 frames/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp6 bits/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp7 frames/sec" 0
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection "qPcp7 bits/sec" 0
+statistic Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp7Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp7Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp7Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp6Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp6Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp6Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp5Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp5Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp5Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp4Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp4Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp4Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp3Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp3Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp3Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp2Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp2Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp2Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp1Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp1Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp1Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp0Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp0Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[0].shaper.transmissionSelection qPcp0Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[0].inControl rxLatency:stats
+field count 200
+field mean 0.000399604
+field stddev 4.501255815446e-08
+field min 0.000399576
+field max 0.000399676
+field sum 0.0799208
+field sqrsum 3.19366717664e-05
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency (received), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[0].mac "simulated time" 2
+scalar Can2tsn.switch2.phy[0].mac full-duplex 1
+scalar Can2tsn.switch2.phy[0].mac "frames/sec sent" 0
+scalar Can2tsn.switch2.phy[0].mac "frames/sec rcvd" 100
+scalar Can2tsn.switch2.phy[0].mac "bits/sec sent" 0
+scalar Can2tsn.switch2.phy[0].mac "bits/sec rcvd" 51200
+scalar Can2tsn.switch2.phy[0].mac "rx channel idle (%)" 99.99424
+scalar Can2tsn.switch2.phy[0].mac "rx channel utilization (%)" 0.00576
+scalar Can2tsn.switch2.phy[0].mac droppedPkNotForUs:count 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, count"
+scalar Can2tsn.switch2.phy[0].mac droppedPkNotForUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[0].mac droppedPkIfaceDown:count 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, count"
+scalar Can2tsn.switch2.phy[0].mac droppedPkIfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[0].mac droppedPkBitError:count 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, count"
+scalar Can2tsn.switch2.phy[0].mac droppedPkBitError:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[0].mac rxPkFromHL:count 0
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, count"
+scalar Can2tsn.switch2.phy[0].mac rxPkFromHL:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar Can2tsn.switch2.phy[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar Can2tsn.switch2.phy[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar Can2tsn.switch2.phy[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar Can2tsn.switch2.phy[0].mac rxPkOk:count 200
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar Can2tsn.switch2.phy[0].mac rxPkOk:sum(packetBytes) 12800
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[0].mac txPk:count 0
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, count"
+scalar Can2tsn.switch2.phy[0].mac txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[0].mac passedUpPk:count 200
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Can2tsn.switch2.phy[0].mac passedUpPk:sum(packetBytes) 12800
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[1].shaper.queue[0] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[0] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[0] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[0] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.queue[0] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.queue[1] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[1] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[1] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[1] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.queue[1] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.queue[2] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[2] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[2] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[2] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.queue[2] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.queue[3] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[3] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[3] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[3] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.queue[3] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.queue[4] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[4] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[4] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[4] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.queue[4] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.queue[5] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[5] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[5] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[5] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.queue[5] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.queue[6] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[6] rxPk:count 200
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[6] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[6] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.queue[6] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.queue[7] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[7] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[7] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.queue[7] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.queue[7] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp0 frames/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp0 bits/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp1 frames/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp1 bits/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp2 frames/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp2 bits/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp3 frames/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp3 bits/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp4 frames/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp4 bits/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp5 frames/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp5 bits/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp6 frames/sec" 100
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp6 bits/sec" 51200
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp7 frames/sec" 0
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection "qPcp7 bits/sec" 0
+statistic Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp7Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp7Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp7Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp6Latency:stats
+field count 201
+field mean 0.00059604577114428
+field stddev 4.2252059056614e-05
+field min 0
+field max 0.0005991
+field sum 0.1198052
+field sqrsum 7.176643012e-05
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp6Pk:count 201
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp6Bytes:sum(packetBytes) 12800
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp5Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp5Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp5Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp4Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp4Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp4Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp3Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp3Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp3Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp2Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp2Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp2Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp1Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp1Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp1Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp0Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp0Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.switch2.phy[1].shaper.transmissionSelection qPcp0Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.switch2.phy[1].inControl rxLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency (received), stats"
+attr unit s
+scalar Can2tsn.switch2.phy[1].mac "simulated time" 2
+scalar Can2tsn.switch2.phy[1].mac full-duplex 1
+scalar Can2tsn.switch2.phy[1].mac "frames/sec sent" 100
+scalar Can2tsn.switch2.phy[1].mac "frames/sec rcvd" 0
+scalar Can2tsn.switch2.phy[1].mac "bits/sec sent" 51200
+scalar Can2tsn.switch2.phy[1].mac "bits/sec rcvd" 0
+scalar Can2tsn.switch2.phy[1].mac "rx channel idle (%)" 100
+scalar Can2tsn.switch2.phy[1].mac "rx channel utilization (%)" 0
+scalar Can2tsn.switch2.phy[1].mac droppedPkNotForUs:count 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, count"
+scalar Can2tsn.switch2.phy[1].mac droppedPkNotForUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[1].mac droppedPkIfaceDown:count 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, count"
+scalar Can2tsn.switch2.phy[1].mac droppedPkIfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[1].mac droppedPkBitError:count 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, count"
+scalar Can2tsn.switch2.phy[1].mac droppedPkBitError:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[1].mac rxPkFromHL:count 200
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, count"
+scalar Can2tsn.switch2.phy[1].mac rxPkFromHL:sum(packetBytes) 12800
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar Can2tsn.switch2.phy[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar Can2tsn.switch2.phy[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar Can2tsn.switch2.phy[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar Can2tsn.switch2.phy[1].mac rxPkOk:count 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar Can2tsn.switch2.phy[1].mac rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[1].mac txPk:count 200
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, count"
+scalar Can2tsn.switch2.phy[1].mac txPk:sum(packetBytes) 12800
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, sum(packetBytes)"
+scalar Can2tsn.switch2.phy[1].mac passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Can2tsn.switch2.phy[1].mac passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar Can2tsn.switch2.avbCTC dropped:count 0
+attr source droppedPk
+attr title "Packets Dropped, count"
+scalar Can2tsn.switch2.avbCTC rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+statistic Can2tsn.switch2.avbCTC latency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.switch2.scheduler.period[0] numberOfCycles:count 0
+attr interpolationmode none
+attr source newCycle
+attr title "Number of cycle, count"
+statistic Can2tsn.canNode2.canNodePort.canPortInput rxRFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, stats"
+attr unit s
+statistic Can2tsn.canNode2.canNodePort.canPortInput rxDFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, stats"
+attr unit s
+scalar Can2tsn.canNode2.canNodePort.canPortInput rxRF:count 0
+attr source rxRF
+attr title "complete remote frames received, count"
+statistic Can2tsn.canNode2.canNodePort.canPortInput rxRFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRF)
+attr title "End-to-end latency of remote frames, stats"
+attr unit s
+scalar Can2tsn.canNode2.canNodePort.canPortInput rxDF:count 0
+attr source rxDF
+attr title "complete data frames received, count"
+statistic Can2tsn.canNode2.canNodePort.canPortInput rxDFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDF)
+attr title "End-to-end latency of data frames, stats"
+attr unit s
+scalar Can2tsn.canNode2.canNodePort.canPortOutput txEF:count 0
+attr source txEF
+attr title "sent errors, count"
+scalar Can2tsn.canNode2.canNodePort.canPortOutput txRF:count 0
+attr source txRF
+attr title "sent remote frames, count"
+scalar Can2tsn.canNode2.canNodePort.canPortOutput txDF:count 0
+attr source txDF
+attr title "sent data frames, count"
+scalar Can2tsn.canNode2.canNodePort.canPortOutput rxEF:count 0
+attr source rxEF
+attr title "receive errors, count"
+statistic Can2tsn.canNode2.bufferIn[0] size:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source size
+attr title "Queue Size, stats"
+attr unit B
+statistic Can2tsn.canNode2.bufferIn[0] length:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source length
+attr title "Queue Length, stats"
+attr unit packets
+scalar Can2tsn.canNode2.bufferIn[0] rxPk:count 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, count"
+scalar Can2tsn.canNode2.bufferIn[0] rxPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, sum(packetBytes)"
+scalar Can2tsn.canNode2.bufferIn[0] txPk:count 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, count"
+scalar Can2tsn.canNode2.bufferIn[0] txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, sum(packetBytes)"
+statistic Can2tsn.canNode2.bufferOut size:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source size
+attr title "Queue Size, stats"
+attr unit B
+statistic Can2tsn.canNode2.bufferOut length:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source length
+attr title "Queue Length, stats"
+attr unit packets
+scalar Can2tsn.canNode2.bufferOut rxPk:count 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, count"
+scalar Can2tsn.canNode2.bufferOut rxPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, sum(packetBytes)"
+scalar Can2tsn.canNode2.bufferOut txPk:count 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, count"
+scalar Can2tsn.canNode2.bufferOut txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, sum(packetBytes)"
+scalar Can2tsn.canNode2.sourceApp[0] txRF:count 0
+attr source txRF
+attr title "source app remote frame, count"
+scalar Can2tsn.canNode2.sourceApp[0] txDF:count 0
+attr source txDF
+attr title "source app data frame, count"
+statistic Can2tsn.canNode2.sinkApp[0] rxRFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, stats"
+attr unit s
+statistic Can2tsn.canNode2.sinkApp[0] rxRFPayloadLatency:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Can2tsn.canNode2.sinkApp[0] rxDFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, stats"
+attr unit s
+statistic Can2tsn.canNode2.sinkApp[0] rxDFPayloadLatency:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Can2tsn.canNode2.sinkApp[0] rxRF:count 0
+attr source rxRF
+attr title "sink app remote frame, count"
+statistic Can2tsn.canNode2.sinkApp[0] rxRFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRF)
+attr title "End-to-end latency of remote frames, stats"
+attr unit s
+scalar Can2tsn.canNode2.sinkApp[0] rxDF:count 0
+attr source rxDF
+attr title "sink app data frame, count"
+statistic Can2tsn.canNode2.sinkApp[0] rxDFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDF)
+attr title "End-to-end latency of data frames, stats"
+attr unit s
+statistic Can2tsn.canNode2.canClock clockDrift:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source clockDrift
+attr title "clockDrift, stats"
+attr unit s
+statistic Can2tsn.canBus2.canBusLogic arbitrationLength:stats
+field count 400
+field mean 0.5
+field stddev 0.50062617432176
+field min 0
+field max 1
+field sum 200
+field sqrsum 200
+attr interpolationmode sample-hold
+attr source arbitrationLength
+attr title "Arbitration Length, stats"
+attr unit packets
+scalar Can2tsn.canBus2.canBusLogic utilization:last 2.9141483358781
+attr source lowHighRatio(state)*100
+attr title "Utilization, last"
+attr unit %
+scalar Can2tsn.canBus2.canBusLogic rxEF:count 0
+attr interpolationmode none
+attr source rxEF
+attr title "error frames received, count"
+scalar Can2tsn.canBus2.canBusLogic rxRF:count 0
+attr interpolationmode none
+attr source rxRF
+attr title "remote frames received, count"
+scalar Can2tsn.canBus2.canBusLogic rxDF:count 200
+attr interpolationmode none
+attr source rxDF
+attr title "data frames received, count"
+scalar Can2tsn.canBus2.canBusLogic framesPerSec:last 100.17829477449
+attr source sumPerDuration(constant1(rxPk))
+attr title "Frames/sec, last"
+attr unit fps
+scalar Can2tsn.canBus2.canBusLogic bitsPerSec:last 58003.232674432
+attr source sumPerDuration(packetBits(rxPk))
+attr title "Bits/sec, last"
+attr unit bps
+statistic Can2tsn.gateway2.can[0].canNodePort.canPortInput rxRFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, stats"
+attr unit s
+statistic Can2tsn.gateway2.can[0].canNodePort.canPortInput rxDFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, stats"
+attr unit s
+scalar Can2tsn.gateway2.can[0].canNodePort.canPortInput rxRF:count 0
+attr source rxRF
+attr title "complete remote frames received, count"
+statistic Can2tsn.gateway2.can[0].canNodePort.canPortInput rxRFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRF)
+attr title "End-to-end latency of remote frames, stats"
+attr unit s
+scalar Can2tsn.gateway2.can[0].canNodePort.canPortInput rxDF:count 0
+attr source rxDF
+attr title "complete data frames received, count"
+statistic Can2tsn.gateway2.can[0].canNodePort.canPortInput rxDFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDF)
+attr title "End-to-end latency of data frames, stats"
+attr unit s
+scalar Can2tsn.gateway2.can[0].canNodePort.canPortOutput txEF:count 0
+attr source txEF
+attr title "sent errors, count"
+scalar Can2tsn.gateway2.can[0].canNodePort.canPortOutput txRF:count 0
+attr source txRF
+attr title "sent remote frames, count"
+scalar Can2tsn.gateway2.can[0].canNodePort.canPortOutput txDF:count 200
+attr source txDF
+attr title "sent data frames, count"
+scalar Can2tsn.gateway2.can[0].canNodePort.canPortOutput rxEF:count 0
+attr source rxEF
+attr title "receive errors, count"
+statistic Can2tsn.gateway2.can[0].bufferIn[0] size:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source size
+attr title "Queue Size, stats"
+attr unit B
+statistic Can2tsn.gateway2.can[0].bufferIn[0] length:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr source length
+attr title "Queue Length, stats"
+attr unit packets
+scalar Can2tsn.gateway2.can[0].bufferIn[0] rxPk:count 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, count"
+scalar Can2tsn.gateway2.can[0].bufferIn[0] rxPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, sum(packetBytes)"
+scalar Can2tsn.gateway2.can[0].bufferIn[0] txPk:count 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, count"
+scalar Can2tsn.gateway2.can[0].bufferIn[0] txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, sum(packetBytes)"
+statistic Can2tsn.gateway2.can[0].bufferOut size:stats
+field count 400
+field mean 36.5
+field stddev 36.545710725488
+field min 0
+field max 73
+field sum 14600
+field sqrsum 1065800
+attr interpolationmode sample-hold
+attr source size
+attr title "Queue Size, stats"
+attr unit B
+statistic Can2tsn.gateway2.can[0].bufferOut length:stats
+field count 400
+field mean 0.5
+field stddev 0.50062617432176
+field min 0
+field max 1
+field sum 200
+field sqrsum 200
+attr interpolationmode sample-hold
+attr source length
+attr title "Queue Length, stats"
+attr unit packets
+scalar Can2tsn.gateway2.can[0].bufferOut rxPk:count 400
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, count"
+scalar Can2tsn.gateway2.can[0].bufferOut rxPk:sum(packetBytes) 29200
+attr interpolationmode none
+attr source rxPk
+attr title "RX Packets, sum(packetBytes)"
+scalar Can2tsn.gateway2.can[0].bufferOut txPk:count 200
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, count"
+scalar Can2tsn.gateway2.can[0].bufferOut txPk:sum(packetBytes) 14600
+attr interpolationmode none
+attr source txPk
+attr title "TX Packets, sum(packetBytes)"
+scalar Can2tsn.gateway2.can[0].sourceApp[0] txRF:count 0
+attr source txRF
+attr title "source app remote frame, count"
+scalar Can2tsn.gateway2.can[0].sourceApp[0] txDF:count 0
+attr source txDF
+attr title "source app data frame, count"
+statistic Can2tsn.gateway2.can[0].sinkApp[0] rxRFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, stats"
+attr unit s
+statistic Can2tsn.gateway2.can[0].sinkApp[0] rxRFPayloadLatency:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRFPayload)
+attr title "End-to-end latency of remote frame payload, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Can2tsn.gateway2.can[0].sinkApp[0] rxDFPayloadLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, stats"
+attr unit s
+statistic Can2tsn.gateway2.can[0].sinkApp[0] rxDFPayloadLatency:histogram
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDFPayload)
+attr title "End-to-end latency of data frame payload, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Can2tsn.gateway2.can[0].sinkApp[0] rxRF:count 0
+attr source rxRF
+attr title "sink app remote frame, count"
+statistic Can2tsn.gateway2.can[0].sinkApp[0] rxRFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxRF)
+attr title "End-to-end latency of remote frames, stats"
+attr unit s
+scalar Can2tsn.gateway2.can[0].sinkApp[0] rxDF:count 0
+attr source rxDF
+attr title "sink app data frame, count"
+statistic Can2tsn.gateway2.can[0].sinkApp[0] rxDFLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source timestampAge(rxDF)
+attr title "End-to-end latency of data frames, stats"
+attr unit s
+statistic Can2tsn.gateway2.can[0].canClock clockDrift:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr source clockDrift
+attr title "clockDrift, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[0] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[0] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[0] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[0] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[0] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[1] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[1] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[1] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[1] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[1] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[2] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[2] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[2] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[2] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[2] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[3] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[3] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[3] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[3] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[3] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[4] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[4] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[4] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[4] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[4] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[5] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[5] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[5] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[5] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[5] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[6] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[6] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[6] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[6] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[6] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[7] dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[7] rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[7] txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[7] txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.queue[7] txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp0 frames/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp0 bits/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp1 frames/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp1 bits/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp2 frames/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp2 bits/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp3 frames/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp3 bits/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp4 frames/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp4 bits/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp5 frames/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp5 bits/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp6 frames/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp6 bits/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp7 frames/sec" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection "qPcp7 bits/sec" 0
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp7Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp7Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp7Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp6Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp6Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp6Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp5Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp5Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp5Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp4Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp4Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp4Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp3Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp3Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp3Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp2Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp2Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp2Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp1Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp1Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp1Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp0Latency:stats
+field count 1
+field mean 0
+field stddev -nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp0Pk:count 1
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].phy[0].shaper.transmissionSelection qPcp0Bytes:sum(packetBytes) 0
+attr interpolationmode none
+attr title "Received Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].phy[0].inControl rxLatency:stats
+field count 200
+field mean 0.000599602
+field stddev 4.3973491658296e-08
+field min 0.000599576
+field max 0.000599676
+field sum 0.1199204
+field sqrsum 7.19045120656e-05
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency (received), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac "simulated time" 2
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac full-duplex 1
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac "frames/sec sent" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac "frames/sec rcvd" 100
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac "bits/sec sent" 0
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac "bits/sec rcvd" 51200
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac "rx channel idle (%)" 99.99424
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac "rx channel utilization (%)" 0.00576
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac droppedPkNotForUs:count 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, count"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac droppedPkNotForUs:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkNotForUs
+attr title "packets dropped/not for us, sum(packetBytes)"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac droppedPkIfaceDown:count 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, count"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac droppedPkIfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkIfaceDown
+attr title "packets dropped/interface down, sum(packetBytes)"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac droppedPkBitError:count 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, count"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac droppedPkBitError:sum(packetBytes) 0
+attr interpolationmode none
+attr source dropPkBitError
+attr title "packets dropped/bit error, sum(packetBytes)"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac rxPkFromHL:count 0
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, count"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac rxPkFromHL:sum(packetBytes) 0
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units received, count"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units received, sum"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr title "pause units sent, count"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr title "pause units sent, sum"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac rxPkOk:count 200
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac rxPkOk:sum(packetBytes) 12800
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac txPk:count 0
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, count"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, sum(packetBytes)"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac passedUpPk:count 200
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar Can2tsn.gateway2.tsn[0].phy[0].mac passedUpPk:sum(packetBytes) 12800
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar Can2tsn.gateway2.tsn[0].avbCTC dropped:count 0
+attr source droppedPk
+attr title "Packets Dropped, count"
+scalar Can2tsn.gateway2.tsn[0].avbCTC rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+statistic Can2tsn.gateway2.tsn[0].avbCTC latency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(rxPk)
+attr title "End-to-end latency, stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].encap pauseSent:count 0
+attr title "pause sent, count"
+scalar Can2tsn.gateway2.tsn[0].encap pauseSent:sum 0
+attr title "pause sent, sum"
+scalar Can2tsn.gateway2.tsn[0].encap decapPk:count 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar Can2tsn.gateway2.tsn[0].encap decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar Can2tsn.gateway2.tsn[0].encap encapPk:count 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar Can2tsn.gateway2.tsn[0].encap encapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar Can2tsn.gateway2.tsn[0].scheduler.period[0] numberOfCycles:count 0
+attr interpolationmode none
+attr source newCycle
+attr title "Number of cycle, count"
+scalar Can2tsn.gateway2.tsn[0].bgIn dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].bgIn rxPk:count 200
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].bgIn txPk:count 200
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].bgIn txBytes:sum(packetBytes) 12800
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].bgIn txLatency:stats
+field count 200
+field mean 0.000599602
+field stddev 4.3973491658296e-08
+field min 0.000599576
+field max 0.000599676
+field sum 0.1199204
+field sqrsum 7.19045120656e-05
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.tsn[0].bgOut dropped:count 0
+attr source dropped
+attr title "Dropped frames, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].bgOut rxPk:count 0
+attr source rxPk
+attr title "Received Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].bgOut txPk:count 0
+attr source txPk
+attr title "Transmitted Packets, count"
+attr unit packets
+scalar Can2tsn.gateway2.tsn[0].bgOut txBytes:sum(packetBytes) 0
+attr interpolationmode none
+attr source txPk
+attr title "Transmitted Bytes, sum(packetBytes)"
+attr unit B
+statistic Can2tsn.gateway2.tsn[0].bgOut txLatency:stats
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr source messageAge(txPk)
+attr title "End-to-end latency (transmitted), stats"
+attr unit s
+scalar Can2tsn.gateway2.gateway.router dropped:count 0
+attr interpolationmode none
+attr source droppedFramesSignal
+attr title "dropped frames, count"
+

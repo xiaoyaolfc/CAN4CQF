@@ -1,0 +1,158 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body onload="if (top.frames['componentsframe'] == undefined) { s = window.location.toString(); window.location = 'index.html?p=' + s.substring(s.lastIndexOf('/')+1); }">
+<h2 class="comptitle">Channel <i>IdealChannel</i></h2>
+<b>Package:</b> ned<br/><b>Built-in type</b><br/><p>(no description)</p><h3 class="subtitle">Usage diagram:</h3>
+<p>The following diagram shows usage relationships between types.
+Unresolved types are missing from the diagram. Click <a href="full-ned-usage-diagram.html">here</a> to see the full picture.</p>
+<img src="ned.IdealChannel-usage.png" ismap="yes" usemap="#usage-diagram"/><map name="usage-diagram"><area shape="rect" id="node1" href="ned.IdealChannel.html" title="Channel IdealChannel" alt="" coords="641,79,739,104">
+<area shape="rect" id="node2" href="can4cqf.can4cqf.linklayer.shaper.IEEE8021Qch.IEEE8021Qch_shaper.html" title="Compound Module IEEE8021Qch_shaper" alt="" coords="5,5,156,31">
+<area shape="rect" id="node3" href="can4cqf.can4cqf.nodes.ethernet.IEEE8021QchHost.html" title="Compound Module IEEE8021QchHost" alt="" coords="181,5,314,31">
+<area shape="rect" id="node4" href="can4cqf.can4cqf.linklayer.port.IEEE8021QchPHYPort.html" title="Compound Module IEEE8021QchPHYPort" alt="" coords="338,5,495,31">
+<area shape="rect" id="node5" href="can4cqf.simulations.small_Network_Can.Small_Network_Can.html" title="Network Small_Network_Can" alt="" coords="520,5,663,31">
+<area shape="rect" id="node6" href="can4cqf.can4cqf.applications.ethernet.TSNCQFEthernetGatewayHost.html" title="Compound Module TSNCQFEthernetGatewayHost" alt="" coords="687,5,893,31">
+<area shape="rect" id="node7" href="can4cqf.can4cqf.nodes.ethernet.TSNCQFHost.html" title="Compound Module TSNCQFHost" alt="" coords="917,5,1023,31">
+<area shape="rect" id="node8" href="can4cqf.can4cqf.nodes.ethernet.TSNCQFSwitch.html" title="Compound Module TSNCQFSwitch" alt="" coords="1046,5,1163,31">
+<area shape="rect" id="node9" href="can4cqf.can4cqf.linklayer.port.TSNPHYPort_CQF.html" title="Compound Module TSNPHYPort_CQF" alt="" coords="1187,5,1323,31">
+</map>
+<h3 class="subtitle">Inheritance diagram:</h3>
+<p>The following diagram shows inheritance relationships for this type.
+Unresolved types are missing from the diagram. Click <a href="full-ned-inheritance-diagram.html">here</a> to see the full picture.</p>
+<img src="ned.IdealChannel-inheritance.png" ismap="yes" usemap="#inheritance-diagram"/><map name="inheritance-diagram"><area shape="rect" id="node1" href="ned.IdealChannel.html" title="Channel IdealChannel" alt="" coords="5,5,104,31">
+</map>
+<h3 class="subtitle">Used in compound modules:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="can4cqf.can4cqf.linklayer.shaper.IEEE8021Qch.IEEE8021Qch_shaper.html">IEEE8021Qch_shaper</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="can4cqf.can4cqf.nodes.ethernet.IEEE8021QchHost.html">IEEE8021QchHost</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+
+<p>实现了CQF的Host，本质上是IEEE802.1Qbv的拓展</p>
+
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="can4cqf.can4cqf.linklayer.port.IEEE8021QchPHYPort.html">IEEE8021QchPHYPort</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+
+<p>实现了CQF的物理层+数据链路层的端口</p>
+
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="can4cqf.can4cqf.applications.ethernet.TSNCQFEthernetGatewayHost.html">TSNCQFEthernetGatewayHost</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+
+<p>使用在gateway中的ethernet模块，由于TSN模块需要与Switch中模块相同，故使用该模块</p>
+
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="can4cqf.can4cqf.nodes.ethernet.TSNCQFHost.html">TSNCQFHost</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="can4cqf.can4cqf.nodes.ethernet.TSNCQFSwitch.html">TSNCQFSwitch</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+<a href="can4cqf.can4cqf.linklayer.port.TSNPHYPort_CQF.html">TSNPHYPort_CQF</a>
+   </td>
+   <td>
+<i>compound&nbsp;module</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Networks:</h3>
+<table class="typestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="type">Type</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>
+<a href="can4cqf.simulations.small_Network_Can.Small_Network_Can.html">Small_Network_Can</a>
+   </td>
+   <td>
+<i>network</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Properties:</h3>
+<table class="propertiestable">
+   <tr>
+      <th class="name">Name</th>
+      <th class="value">Value</th>
+      <th class="description">Description</th>
+   </tr>
+<tr>
+   <td>class</td>
+   <td><i>cIdealChannel</i></td>
+   <td></td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">channel</span><span style="color: #000000; "> </span><span style="color: #000000; ">IdealChannel</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000000; font-weight: bold; ">@class</span><span style="color: #000000; ">(</span><span style="color: #000000; ">cIdealChannel</span><span style="color: #000000; ">);
+}
+
+</span></pre>
+   <hr><p class="footer"><a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top"><img src="by-sa.png"></a> This documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">Creative Commons license</a></p>
+   </body>
+</html>
