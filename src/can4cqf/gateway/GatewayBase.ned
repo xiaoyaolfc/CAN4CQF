@@ -28,7 +28,7 @@ module GatewayBase
         //Number of gateway ports
         int numPorts;
         //Path of the gateway configuration xml file
-        xml configXML = default(xmldoc("GatewayConfig.xml"));
+        xml configXML;
         //The path in configXML is the default path for the router, buffering and transform module
         xml defaultConfigXML = configXML;
         //Static delay of the router module
@@ -36,12 +36,9 @@ module GatewayBase
         //Static delay of the buffering module
         double bufferingDelay @unit(s) = default(0s);
         //Static delay of the tranform module
-        double transformDelay @unit(s) = default(0s);
-
+        double transformDelay @unit(s) = default(0s);     
         //Gateway ID in gateway config file. If auto or empty the gateway module name will be used.
         string gatewayID = default("auto");
-        *.gatewayID = gatewayID;
-
     gates:
         input lowerLayerIn[numPorts];
         output lowerLayerOut[numPorts];
@@ -56,31 +53,34 @@ module GatewayBase
         //module that handles the routing data
         router: <default("BaseGatewayRouter")> like IGatewayRouter {
             @display("p=63,100;i=block/routing");
-            configXML = default(defaultConfigXML);
+            configXML = default(parent.defaultConfigXML);
+            gatewayID = parent.gatewayID;
             gates:
-                in[numPorts];
-                out[numPorts];
+                in[parent.numPorts];
+                out[parent.numPorts];
         }
 
         //module that performs the transformations in all directions
 //        transform[numPorts]: <default("GatewayTransformation")> like IGatewayTransformation {
 		transform[numPorts]: <default("NoGatewayTransformation")> like IGatewayTransformation {
             @display("p=355,100,c,130;i=block/segm");
-            configXML = default(defaultConfigXML);
+            configXML = default(parent.defaultConfigXML);
+            gatewayID = parent.gatewayID;
         }
 
         //module that coordinates the preBuffer behaivior
 //        buffering[numPorts]: <default("AggregationGatewayBuffering")> like IGatewayBuffering {
 		buffering[numPorts]: <default("NoGatewayBuffering")> like IGatewayBuffering {            
             @display("p=200,100,c,130;i=block/subqueue");
-            configXML = default(defaultConfigXML);
+            configXML = default(parent.defaultConfigXML);
+            gatewayID = parent.gatewayID;
         }
 
     connections:
         for i=0..numPorts-1 {
             lowerLayerIn[i] --> router.in[i];
-            router.out[i] --> ProcessingDelay {  delay = routingDelay; } --> buffering[i].in;
-            buffering[i].out --> ProcessingDelay {  delay = bufferingDelay; } --> transform[i].in;
-            transform[i].out --> ProcessingDelay {  delay = transformDelay; } --> lowerLayerOut[i];
+            router.out[i] --> ProcessingDelay {  delay = parent.routingDelay; } --> buffering[i].in;
+            buffering[i].out --> ProcessingDelay {  delay = parent.bufferingDelay; } --> transform[i].in;
+            transform[i].out --> ProcessingDelay {  delay = parent.transformDelay; } --> lowerLayerOut[i];
         }
 }

@@ -32,15 +32,15 @@ public:
     /*
      * @brief 拷贝构造函数
      * */
-    CircularRotationMessage(const CircularRotationMessage& other):CircularRotationMessage_Base(other.getName()){
-        operator = (other);
+    CircularRotationMessage(const CircularRotationMessage& other):CircularRotationMessage_Base(other){
+        copy(other);
     }
     /*
      * @breif 复制函数
      * */
-    virtual CircularRotationMessage *dup() const{
-        return new CircularRotationMessage(*this);
-    }
+    virtual CircularRotationMessage *dup() const override {
+            return new CircularRotationMessage(*this);
+        }
     /*
      * @brief 运算符函数
      * */
@@ -67,6 +67,10 @@ public:
         @brief 一次性获得map<dataframe,double>中所有元素，后续再调用封装函数，将报文封装入this中
    */
     void setAllCanDataFrameAndHoldTime(std::map<FiCo4OMNeT::CanDataFrame*,double> map);
+    /*
+     * @brief 为transformation模块中设置ttflow传输目的mac用
+     * */
+    std::list<FiCo4OMNeT::CanDataFrame*> getCanDataFrameList();
 
 };
 }

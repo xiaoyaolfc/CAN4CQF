@@ -40,7 +40,7 @@ module IEEE8021QchPHYPort
         //接口允许具有此VLAN的帧进入和离开端口
         string taggedVIDs = default("0");
         
-        *.interfaceTableModule = default(absPath(interfaceTableModule));
+        *.interfaceTableModule = default(absPath(this.interfaceTableModule));
         
     gates:
         //Input from the upper layer
@@ -56,17 +56,17 @@ module IEEE8021QchPHYPort
         //Module for the organisation of outbound traffic
         shaper: IEEE8021Qch_shaper {
             @display("p=48,45");
-            untaggedVID = untaggedVID;
-            taggedVIDs = taggedVIDs;
+            untaggedVID = parent.untaggedVID;
+            taggedVIDs = parent.taggedVIDs;
         }
         
         //Module for the organisation of inbound traffic
         inControl: AVB_8021Q_InControl {
             parameters:
                 @display("p=142,45");
-                promiscuous = promiscuous;
-                untaggedVID = untaggedVID;
-            	taggedVIDs = taggedVIDs;
+                promiscuous = parent.promiscuous;
+                untaggedVID = parent.untaggedVID;
+            	taggedVIDs = parent.taggedVIDs;
         }
         
         //MAC interface

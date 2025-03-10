@@ -34,7 +34,6 @@ module CANBusIEEE8021QchGateway
 
         //Gateway ID in gateway config file. If auto or empty the gateway module name will be used.
         string gatewayID = default("auto");
-        *.gatewayID = gatewayID;
 
     gates:
         //ethernet connection
@@ -56,7 +55,8 @@ module CANBusIEEE8021QchGateway
         //gateway module
         gateway: GatewayBase {
             @display("p=276,97");
-            numPorts = countOfCanBusses + countOfEthernetPorts;
+            gatewayID = parent.gatewayID;
+            numPorts = parent.countOfCanBusses + parent.countOfEthernetPorts;
         }
 
     connections:

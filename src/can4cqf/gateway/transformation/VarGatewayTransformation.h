@@ -42,9 +42,9 @@ public:
      * */
     void handleParameterChange(const char* parname);
     /*
-        @brief 存储封装报文的 map
+        @brief 存储封装报文crclmsg需要发送的canfd报文，这里用作给ttflow设置报文长度和目的mac，使用list存canfd即可
     */
-    std::map<FiCo4OMNeT::CanDataFrame*,double> crcToMap;    
+    std::list<FiCo4OMNeT::CanDataFrame*>  crcTolist;
   private:
     /**
      * @brief CAN帧的CRC字段bit长度.

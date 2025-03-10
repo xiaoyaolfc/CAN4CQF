@@ -13,7 +13,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#include <can4cqf/gateway/transformation/EDFGatewayTransformation.h>
+#include "EDFGatewayTransformation.h"
 
 #include "inet/linklayer/common/MACAddress.h"
 #include "inet/linklayer/ethernet/Ethernet.h"

@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
-  <inputs>
-    <inputs name="/CAN4CQF/simulations/large_network/results/RAE-*.vec"/>
-    <inputs name="/CAN4CQF/simulations/large_network/results/RAE-*.sca"/>
-  </inputs>
-  <datasets/>
-  <chartSheets>
-    <chartSheets name="default"/>
-  </chartSheets>
-</scave:Analysis>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<analysis version="2">
+    <inputs>
+        <input pattern="/CAN2CQF/simulations/large_network/results/RAE-*.vec"/>
+        <input pattern="/CAN2CQF/simulations/large_network/results/RAE-*.sca"/>
+    </inputs>
+    <charts/>
+</analysis>

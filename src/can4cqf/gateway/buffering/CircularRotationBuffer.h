@@ -186,6 +186,7 @@ public:
       /*
        * @brief 结构体，存储CAN-FD的相关信息
        * */
+      void finish();
 
 };
 
