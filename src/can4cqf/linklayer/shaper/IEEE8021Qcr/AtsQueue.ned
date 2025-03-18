@@ -13,16 +13,17 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package can4cqf.simulations.small_Network_Can;
+package can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr;
 
-import can4cqf.can4cqf.nodes.ethernet.TSNCQFSwitch;
-// 导入CoRE
-import core4inet.incoming.AS6802.TTIncoming;
-import core4inet.buffer.AS6802.TTQueueBuffer;
-
-module Switch extends TSNCQFSwitch
-{
+//
+// TODO auto-generated module
+//
+simple AtsQueue {
     parameters:
-        @display("bgb=743,507"); 
+        int queueSize @unit(pkts);       // 队列容量
+        @class(AtsQueue);
+        @display("i=block/queue");
+    gates:
+        input in;                        // 数据包输入
+        output out;                      // 数据包输出（受信用控制）
 }
-

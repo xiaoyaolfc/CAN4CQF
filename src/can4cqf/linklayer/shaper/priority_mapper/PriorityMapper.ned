@@ -13,17 +13,18 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package can4cqf.simulations.small_Network_Can;
+package can4cqf.can4cqf.linklayer.shaper.priority_mapper;
 
-//import can2cqfagg.can2cqfagg.BusEthernetGateway;
-import can4cqf.can4cqf.gateway.CANBusIEEE8021QchGateway;
-
-import core4inet.incoming.AS6802.TTIncoming;
-import core4inet.buffer.AS6802.TTDoubleBuffer;
-
-module Gateway1 extends CANBusIEEE8021QchGateway
-{
-    submodules:
-
-    connections:
+//
+// TODO auto-generated module
+//
+simple PriorityMapper {
+    parameters:
+        string dscpToPriorityMap; // DSCP到优先级的映射表（格式："40:7,30:5,default:3"）
+        @class(PriorityMapper);  // 绑定C++实现类
+        @display("i=block/classifier2_vl");
+        
+    gates:
+        input in;             // 输入门（连接流量分类器）
+        output out;           // 输出门（连接整形器队列）
 }

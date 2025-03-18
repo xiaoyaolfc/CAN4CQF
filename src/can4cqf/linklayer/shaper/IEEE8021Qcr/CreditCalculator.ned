@@ -13,11 +13,19 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package can4cqf.simulations.big_network_baseline;
-import can4cqf.can4cqf.nodes.ethernet.TSNCQFSwitch;
+package can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr;
 
-module Switch3 extends TSNCQFSwitch
-{
+//
+// TODO auto-generated module
+//
+simple CreditCalculator {
     parameters:
-        @display("bgb=757,524");
+        double initialCredit @unit(b);   // 初始信用值（字节）
+        double idleSlope @unit(b/s);     // 信用增长速率（IEEE 802.1Qcr参数）
+        double sendSlope @unit(b/s);     // 信用消耗速率
+        @class(CreditCalculator);        // 绑定C++类
+        @display("i=block/boundedqueue");
+    gates:
+        input in;                        // 接收信用更新触发信号
+        output out;                      // 输出当前信用值
 }

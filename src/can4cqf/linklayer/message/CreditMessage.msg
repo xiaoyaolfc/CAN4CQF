@@ -13,11 +13,17 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package can4cqf.simulations.big_network_baseline;
-import can4cqf.can4cqf.nodes.ethernet.TSNCQFSwitch;
+namespace CAN4CQF;
 
-module Switch1 extends TSNCQFSwitch
+message CreditMessage extends cPacket
 {
-    parameters:
-        @display("bgb=757,524");
+    // 定义基础数据类型
+    double creditValue;  // 必须声明信用值字段
+    int credits;
+    simtime_t generationTime;
+    bool congestionFlag; // 网络拥塞状态标记
+
+    // 可选扩展字段（根据实际需求增减）
+    string sourceQueue;
+    double bandwidthRequirement;
 }

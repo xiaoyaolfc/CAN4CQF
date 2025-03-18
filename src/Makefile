@@ -54,8 +54,12 @@ OBJS = \
     $O/can4cqf/linklayer/shaper/IEEE8021Qch/Rxgate.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qch/gate/IEEE8021QchGateControlList.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qch_queueing/IEEE8021QchQueueing.o \
+    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/AtsQueue.o \
+    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/CreditCalculator.o \
+    $O/can4cqf/linklayer/shaper/priority_mapper/PriorityMapper.o \
     $O/can4cqf/linklayer/message/ARTF_m.o \
     $O/can4cqf/linklayer/message/CircularRotationMessage_m.o \
+    $O/can4cqf/linklayer/message/CreditMessage_m.o \
     $O/can4cqf/linklayer/message/HRTF_m.o \
     $O/can4cqf/linklayer/message/IEEE8021QchBEFlow_m.o \
     $O/can4cqf/linklayer/message/IEEE8021QchTTFlow_m.o \
@@ -65,6 +69,7 @@ OBJS = \
 MSGFILES = \
     can4cqf/linklayer/message/ARTF.msg \
     can4cqf/linklayer/message/CircularRotationMessage.msg \
+    can4cqf/linklayer/message/CreditMessage.msg \
     can4cqf/linklayer/message/HRTF.msg \
     can4cqf/linklayer/message/IEEE8021QchBEFlow.msg \
     can4cqf/linklayer/message/IEEE8021QchTTFlow.msg \
