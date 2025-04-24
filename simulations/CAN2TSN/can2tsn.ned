@@ -17,6 +17,7 @@ package can4cqf.simulations.CAN2TSN;
 
 import can4cqf.can4cqf.nodes.ethernet.TSNCQFSwitch;
 import can4cqf.can4cqf.gateway.BusEthernetGateway;
+import can4cqf.can4cqf.applications.TSNCANHost.TSNCANHost;
 // 导入fico4omnet
 import fico4omnet.bus.can.CanBus;
 import fico4omnet.nodes.can.CanNode;
@@ -57,7 +58,7 @@ network Can2tsn
             parameters:
                 @display("p=358,238");
             gates:
-                ethg[2];
+                ethg[3];
         }
         switch2: Switch2 {
             parameters:
@@ -78,12 +79,16 @@ network Can2tsn
                 cang[1];
                 ethg[1];
         }
+        tsncanhost: TSNCANHost {
+            @display("p=358,122");
+        }
     connections:
         canNode1.gate <--> canBus1.gate++;
         canNode2.gate <--> canBus2.gate++;
         gateway1.cang[0] <--> canBus1.gate++;
         gateway1.ethg[0] <--> cable {  delay = 0ns; } <--> switch1.ethg[0];
         switch1.ethg[1] <--> cable {  delay = 0ns; } <--> switch2.ethg[0];
+        switch1.ethg[2] <--> cable {  delay = 0ns; } <--> tsncanhost.gate;
         switch2.ethg[1] <--> cable {  delay = 0ns; } <--> gateway2.ethg[0];
         gateway2.cang[0] <--> canBus2.gate++;
 

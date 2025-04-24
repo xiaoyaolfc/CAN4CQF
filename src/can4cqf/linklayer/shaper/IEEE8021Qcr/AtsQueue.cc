@@ -13,33 +13,63 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#include "AtsQueue.h"
+#include <can4cqf/linklayer/shaper/IEEE8021Qcr/ATSQueue.h>
 
 namespace CAN4CQF {
 
-Define_Module(AtsQueue);
+Define_Module(ATSQueue);
 
-void AtsQueue::initialize() {
-    capacity = par("queueSize").intValue();
+void ATSQueue::initialize() {
+    numQueues = par("numQueues").intValue();
+    queueCapacity = par("queueCapacity").intValue();
+    queues.resize(numQueues);
 }
 
-void AtsQueue::handleMessage(cMessage *msg) {
-    if (msg->arrivedOn("in")) {
-        if (queue.size() < capacity) {
-            queue.push(check_and_cast<cPacket *>(msg));
-            EV << "Packet enqueued. Queue size: " << queue.size() << endl;
-        } else {
-            EV << "Queue full. Packet dropped." << endl;
-            delete msg;
-        }
+void ATSQueue::handleMessage(cMessage *msg) {
+    cPacket *pkt = check_and_cast<cPacket *>(msg);
+    int priority = pkt->getKind() % numQueues;  // 通过 `kind` 字段确定优先级
+
+    if ((int)queues[priority].size() < queueCapacity) {
+        queues[priority].push(pkt);
+    } else {
+        EV_WARN << "ATSQueue: 队列已满，丢弃数据包。\n";
+        delete pkt;
     }
 }
 
-bool AtsQueue::canSendPacket(cPacket *pkt) {
-    // 从CreditCalculator获取当前信用值
-    double credit = getParentModule()->getSubmodule("creditCalc")
-                    ->par("credit").doubleValue();
-    return credit >= pkt->getByteLength();
+bool ATSQueue::isEmpty() {
+    for (int i = 0; i < numQueues; i++) {
+        if (!queues[i].empty()) return false;
+    }
+    return true;
+}
+
+int ATSQueue::getNumPackets() {
+    int count = 0;
+    for (auto& q : queues) {
+        count += q.size();
+    }
+    return count;
+}
+
+cPacket* ATSQueue::getPacket(int index) {
+    for (int i = 0; i < numQueues; i++) {
+        if (!queues[i].empty()) {
+            return queues[i].front();
+        }
+    }
+    return nullptr;
+}
+
+cPacket* ATSQueue::removePacket(int index) {
+    for (int i = 0; i < numQueues; i++) {
+        if (!queues[i].empty()) {
+            cPacket *pkt = queues[i].front();
+            queues[i].pop();
+            return pkt;
+        }
+    }
+    return nullptr;
 }
 
 } //namespace

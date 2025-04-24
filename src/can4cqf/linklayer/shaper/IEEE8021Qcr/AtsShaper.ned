@@ -14,31 +14,73 @@
 // 
 
 package can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr;
-import can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr.AtsQueue;
+import can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr.ATSQueue;
 import can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr.CreditCalculator;
-import can4cqf.can4cqf.linklayer.shaper.priority_mapper.PriorityMapper;
+import can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr.ATSTrafficRegulator;
+import can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr.ATSTokenBucket;
+import can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr.ATSFlowEstimator;
 
-module AtsShaper {
+// ATSShaper: 基于 IEEE 802.1Qcr 的 ATS 整形复合模块
+// 由 ATSQueue、ATSTrafficRegulator、ATSTokenBucket 和 ATSFlowEstimator 组成，
+// 支持两个上层输入端口（普通和直通输入）的合并处理。
+//
+module ATSShaper {
     parameters:
-        @class(AtsShaper);
+        // 链路与令牌桶相关参数（单位均为纯数字）
+        double linkRate @unit(bps) = default(1Gbps);         // 链路速率
+        double bucketSize @unit(Mbit) = default(1Mbit);        // 令牌桶容量
+        double tokenRate @unit(bps) = default(100Mbps);      // 令牌生成速率
+        double maxBurstSize @unit(Kbit) = default(64Kbit);     // 最大突发流量
+        double processingDelay @unit(us) = default(10us);     // 处理延迟
+        double trafficRegulatorDelay @unit(ms) = default(1ms); // 流量调节延迟
+        
+        // 队列和流量调节参数
+        int numQueues = default(8);
+        int queueCapacity = default(100);
+        // VLAN 参数
+        int untaggedVID = default(0);
+        string taggedVIDs = default("0");
+        @display("i=block/classifier");
+
     gates:
-        input in;          // 输入端口（连接网络）
-        output out;        // 输出端口（连接物理链路）
-        input creditIn @directIn;  // 门类型改为纯输入
-        output creditOut;          // 输出门声
+        // 两个上层输入端口：普通输入和直通输入
+        input in[2] @labels(Packet);
+        output out @labels(Packet);
 
     submodules:
-        creditCalc: CreditCalculator {
-            @display("p=100,100");
+        queue: ATSQueue {
+            parameters:
+                numQueues = parent.numQueues;
+                queueCapacity = parent.queueCapacity;
+            @display("p=100,200");
         }
-        queue: AtsQueue {
-            @display("p=200,100");
+        trafficRegulator: ATSTrafficRegulator {
+            parameters:
+                maxRate = parent.tokenRate;
+                shapingDelay = parent.trafficRegulatorDelay;
+            @display("p=250,200");
         }
-        priMapper: PriorityMapper;  // 优先级映射模块
+        tokenBucket: ATSTokenBucket {
+            parameters:
+                bucketSize = parent.bucketSize;
+                tokenRate = parent.tokenRate;
+                maxBurstSize = parent.maxBurstSize;
+            @display("p=400,200");
+        }
+        flowEstimator: ATSFlowEstimator {
+            parameters:
+                linkRate = parent.linkRate;
+                processingDelay = parent.processingDelay;
+            @display("p=550,200");
+        }
 
     connections:
-        // 修正为独立路径
-        creditCalc.out --> creditOut;  // 信用值输出到外部
-        in --> queue.in;               // 数据输入保持原样
-        queue.out --> out;             // 数据输出到物理端口
+        // 将 ATSShaper 的两个输入分别连接到 ATSQueue 的不同输入门
+        in[0] --> queue.in[0];
+        in[1] --> queue.in[1];
+        // 数据包处理流程：队列 -> 流量调节 -> 令牌桶 -> 预计传输时间估计 -> 输出
+        queue.out --> trafficRegulator.in;
+        trafficRegulator.out --> tokenBucket.in;
+        tokenBucket.out --> flowEstimator.in;
+        flowEstimator.out --> out;
 }

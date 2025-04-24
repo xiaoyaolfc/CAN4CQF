@@ -1,13 +1,13 @@
 #
-# OMNeT++/OMNEST Makefile for $(LIB_PREFIX)CAN2CQF
+# OMNeT++/OMNEST Makefile for $(LIB_PREFIX)CAN4CQF
 #
 # This file was generated with the command:
-#  opp_makemake --make-so -f --deep -KCORE4INET_PROJ=../../CoRE4INET -KINET_PROJ=../../inet -KFICO4OMNET_PROJ=../../FiCo4OMNeT -KSIGNALSANDGATEWAYS_PROJ=../../SignalsAndGateways -DINET_IMPORT -I. -I$$\(CORE4INET_PROJ\)/src -I$$\(CORE4INET_PROJ\)/src/core4inet/api/AS6802/tte_api -I$$\(INET_PROJ\)/src -I$$\(FICO4OMNET_PROJ\)/src -I$$\(SIGNALSANDGATEWAYS_PROJ\)/src -L$$\(CORE4INET_PROJ\)/src -L$$\(FICO4OMNET_PROJ\)/src -L$$\(INET_PROJ\)/src -L$$\(SIGNALSANDGATEWAYS_PROJ\)/src -lCoRE4INET$$\(D\) -lFiCo4OMNeT$$\(D\) -lINET$$\(D\) -lSignalsAndGateways$$\(D\)
+#  opp_makemake --make-so -f --deep -KCORE4INET_PROJ=../../CoRE4INET -KINET_PROJ=../../inet -KFICO4OMNET_PROJ=../../FiCo4OMNeT -KSIGNALSANDGATEWAYS_PROJ=../../SignalsAndGateways -DINET_IMPORT -I. -I$$\(CORE4INET_PROJ\)/src -I$$\(CORE4INET_PROJ\)/src/core4inet/api/AS6802/tte_api -I$$\(INET_PROJ\)/src -I$$\(FICO4OMNET_PROJ\)/src -I$$\(FICO4OMNET_PROJ\)/src -I$$\(SIGNALSANDGATEWAYS_PROJ\)/src -L$$\(CORE4INET_PROJ\)/src -L$$\(FICO4OMNET_PROJ\)/src -L$$\(INET_PROJ\)/src -L$$\(SIGNALSANDGATEWAYS_PROJ\)/src -lCoRE4INET$$\(D\) -lFiCo4OMNeT$$\(D\) -lINET$$\(D\) -lSignalsAndGateways$$\(D\)
 #
 
 # Name of target to be created (-o option)
 TARGET_DIR = .
-TARGET_NAME = $(LIB_PREFIX)CAN2CQF$(D)
+TARGET_NAME = $(LIB_PREFIX)CAN4CQF$(D)
 TARGET = $(TARGET_NAME)$(SHARED_LIB_SUFFIX)
 TARGET_IMPLIB = $(TARGET_NAME)$(IMPLIB_SUFFIX)
 TARGET_IMPDEF = $(TARGET_NAME)$(IMPDEF_SUFFIX)
@@ -19,6 +19,7 @@ INCLUDE_PATH = \
     -I$(CORE4INET_PROJ)/src \
     -I$(CORE4INET_PROJ)/src/core4inet/api/AS6802/tte_api \
     -I$(INET_PROJ)/src \
+    -I$(FICO4OMNET_PROJ)/src \
     -I$(FICO4OMNET_PROJ)/src \
     -I$(SIGNALSANDGATEWAYS_PROJ)/src
 
@@ -36,6 +37,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 # Object files for local .cc, .msg and .sm files
 OBJS = \
     $O/can4cqf/applications/IEEE8021Qch/TTApplicationBase.o \
+    $O/can4cqf/applications/TSNCANHost/Transformation.o \
     $O/can4cqf/applications/ethernet/EthernetGatewayApplication.o \
     $O/can4cqf/gateway/buffering/AggregationGatewayBuffering.o \
     $O/can4cqf/gateway/buffering/CircularRotationBuffer.o \
@@ -54,9 +56,12 @@ OBJS = \
     $O/can4cqf/linklayer/shaper/IEEE8021Qch/Rxgate.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qch/gate/IEEE8021QchGateControlList.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qch_queueing/IEEE8021QchQueueing.o \
-    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/AtsQueue.o \
+    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/ATSFlowEstimator.o \
+    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/ATSQueue.o \
+    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/ATSTokenBucket.o \
+    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/ATSTrafficRegulator.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qcr/CreditCalculator.o \
-    $O/can4cqf/linklayer/shaper/priority_mapper/PriorityMapper.o \
+    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/queue/PacketQueueBase.o \
     $O/can4cqf/linklayer/message/ARTF_m.o \
     $O/can4cqf/linklayer/message/CircularRotationMessage_m.o \
     $O/can4cqf/linklayer/message/CreditMessage_m.o \

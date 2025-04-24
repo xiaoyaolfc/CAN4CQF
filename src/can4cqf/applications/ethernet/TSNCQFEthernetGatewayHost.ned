@@ -17,24 +17,23 @@ package can4cqf.can4cqf.applications.ethernet;
 // 导入SignalAndGateway
 import signalsandgateways.applications.ethernet.EthernetGatewayApplication;
 // 导入CAN4CQF
-import can4cqf.can4cqf.nodes.ethernet.TSNCQFHost;
 import can4cqf.can4cqf.applications.ethernet.IEthernetGatewayHost;
 import can4cqf.can4cqf.nodes.ethernet.IEEE8021QchHost;
 // 使用在gateway中的ethernet模块，由于TSN模块需要与Switch中模块相同，故使用该模块
-module TSNCQFEthernetGatewayHost extends IEEE8021QchHost like IEthernetGatewayHost 
+module TSNCQFEthernetGatewayHost extends IEEE8021QchHost like IEthernetGatewayHost
 {
     parameters:
         @display("bgb=750,503");
-//        int numberOfTT_Vlinks; // (unused) Forced by interface
-//        int numberOfRC_Vlinks; // (unused) Forced by interface
+    //        int numberOfTT_Vlinks; // (unused) Forced by interface
+    //        int numberOfRC_Vlinks; // (unused) Forced by interface
     gates:
         output upperLayerOut;
         input upperLayerIn;
     submodules:
         gatewayApp: EthernetGatewayApplication {
-            @display("p=512.07,49.686");
+            @display("p=530.322,49.686");
         }
     connections:
         gatewayApp.upperLayerOut --> upperLayerOut;
-        gatewayApp.upperLayerIn <-- upperLayerIn;    
+        gatewayApp.upperLayerIn <-- upperLayerIn;
 }

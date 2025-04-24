@@ -15,15 +15,18 @@
 
 package can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr;
 
+import can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr.queue.PacketQueueBase;
+
 //
-// TODO auto-generated module
+// ATSQueue: ATS 队列模块，用于存储和按优先级调度数据包
 //
-simple AtsQueue {
+simple ATSQueue {
     parameters:
-        int queueSize @unit(pkts);       // 队列容量
-        @class(AtsQueue);
+        int numQueues = default(8);
+        int queueCapacity = default(100);
         @display("i=block/queue");
     gates:
-        input in;                        // 数据包输入
-        output out;                      // 数据包输出（受信用控制）
+        // 定义输入门为向量，便于多个上层输入合并
+        input in[2] @labels(Packet);
+        output out @labels(Packet);
 }

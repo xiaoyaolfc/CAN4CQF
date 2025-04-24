@@ -17,31 +17,30 @@
 #define __CAN2CQF_ATSQUEUE_H_
 
 #pragma once
-#include <queue>
 #include <omnetpp.h>
-#include "core4inet/buffer/base/QueueBuffer.h"
+#include<vector>
+#include<queue>
+#include "queue/PacketQueueBase.h"  // 兼容 INET 3.8.3 的 PacketQueueBase
 
 using namespace omnetpp;
-
+using namespace std;
 namespace CAN4CQF {
 
 /**
  * TODO - Generated class
  */
-class AtsQueue : public cSimpleModule
-{
-private:
-    std::queue<cPacket *> queue;         // 数据包队列
-    int capacity;                        // 最大队列长度
-
+class ATSQueue : public PacketQueueBase {
   protected:
+    int numQueues;
+    int queueCapacity;
+    std::vector<std::queue<cPacket*>> queues;
+
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
-
-  public:
-    // 函数功能：检查是否可以发送数据（信用是否足够）
-    // 返回值：true表示允许发送
-    bool canSendPacket(cPacket *pkt);
+    virtual bool isEmpty() override;
+    virtual int getNumPackets() override;
+    virtual cPacket* getPacket(int index) override;
+    virtual cPacket* removePacket(int index) override;
 };
 
 } //namespace

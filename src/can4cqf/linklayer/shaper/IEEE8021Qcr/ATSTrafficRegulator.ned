@@ -1,0 +1,32 @@
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see http://www.gnu.org/licenses/.
+// 
+
+package can4cqf.can4cqf.linklayer.shaper.IEEE8021Qcr;
+//import inet.common.units; // 导入单位定义
+
+//
+// TODO auto-generated module
+//
+simple ATSTrafficRegulator {
+    parameters:
+        double maxRate @unit(Mbps) = default(100Mbps);  // 最大允许速率
+        double shapingDelay @unit(ms) = default(1ms); // 整形延迟
+        @class(ATSTrafficRegulator);
+        @display("i=block/control");
+
+    gates:
+        input in @labels(Packet);  // 输入数据包
+        output out @labels(Packet); // 输出数据包
+}

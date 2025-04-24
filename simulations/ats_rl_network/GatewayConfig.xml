@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<gateway id="gateway1">
+		<routing>
+			<route source="0" destination="1">
+				<canframe canId="1"/>
+				<canframe canId="2"/>
+				<canframe canId="3"/>
+				<canframe canId="4"/>
+				<canframe canId="5"/>
+				<canframe canId="6"/>
+				<canframe canId="7"/>
+				<canframe canId="8"/>
+				<canframe canId="9"/>
+				<canframe canId="10"/>
+				<canframe canId="11"/>
+				<canframe canId="12"/>
+				<canframe canId="13"/>
+				<canframe canId="14"/>
+				<canframe canId="15"/>
+				<canframe canId="16"/>
+				<canframe canId="17"/>
+				<canframe canId="18"/>
+				<canframe canId="19"/>
+				<canframe canId="20"/>
+				<canframe canId="21"/>
+				<canframe canId="22"/>
+				<canframe canId="23"/>
+				<canframe canId="24"/>
+				<canframe canId="25"/>
+				<canframe canId="26"/>
+				<canframe canId="27"/>
+				<canframe canId="28"/>
+				<canframe canId="29"/>
+				<canframe canId="30"/>
+				<canframe canId="31"/>
+				<canframe canId="32"/>
+				<canframe canId="33"/>
+				<canframe canId="34"/>
+				<canframe canId="35"/>
+				<canframe canId="36"/>
+				<canframe canId="37"/>
+				<canframe canId="38"/>
+				<canframe canId="39"/>
+				<canframe canId="40"/>								
+			</route>
+		</routing>
+		<transformation destination="1" type="toEthernet">
+			<ethernetqframe dst="0A-00-00-00-00-08" vid="1" pcp="7">
+				<canframe canId="1"/>
+				<canframe canId="2"/>
+				<canframe canId="3"/>
+				<canframe canId="4"/>
+				<canframe canId="5"/>
+				<canframe canId="6"/>
+				<canframe canId="7"/>
+				<canframe canId="8"/>
+				<canframe canId="9"/>
+				<canframe canId="10"/>
+				<canframe canId="11"/>
+				<canframe canId="12"/>
+				<canframe canId="13"/>
+				<canframe canId="14"/>
+				<canframe canId="15"/>
+				<canframe canId="16"/>
+				<canframe canId="17"/>
+				<canframe canId="18"/>
+				<canframe canId="19"/>
+				<canframe canId="20"/>
+				<canframe canId="21"/>
+				<canframe canId="22"/>
+				<canframe canId="23"/>
+				<canframe canId="24"/>
+				<canframe canId="25"/>
+				<canframe canId="26"/>
+				<canframe canId="27"/>
+				<canframe canId="28"/>
+				<canframe canId="29"/>
+				<canframe canId="30"/>
+				<canframe canId="31"/>
+				<canframe canId="32"/>
+				<canframe canId="33"/>
+				<canframe canId="34"/>
+				<canframe canId="35"/>
+				<canframe canId="36"/>
+				<canframe canId="37"/>
+				<canframe canId="38"/>
+				<canframe canId="39"/>
+				<canframe canId="40"/>					
+			</ethernetqframe>
+		</transformation>
+	</gateway>
+	
+	<gateway id="gateway2">
+		<routing>
+			<route source="1" destination="0">
+				<ethernetqframe dst="0A-00-00-00-00-08" vid="1"/>
+			</route>
+		</routing>
+		<transformation destination="0" type="toCan">
+			<ethernetqframe dst="0A-00-00-00-00-08"/>
+		</transformation>
+	</gateway>	
+</config>

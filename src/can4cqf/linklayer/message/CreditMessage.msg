@@ -13,6 +13,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
+
 namespace CAN4CQF;
 
 message CreditMessage extends cPacket
