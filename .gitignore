@@ -1,1 +1,6 @@
 /Release/
+# 忽略 .settings 目录及其所有内容
+.settings/
+
+# 忽略 out 目录及其所有内容
+out/

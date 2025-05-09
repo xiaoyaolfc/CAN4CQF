@@ -57,7 +57,7 @@ OBJS = \
     $O/can4cqf/linklayer/shaper/IEEE8021Qch/gate/IEEE8021QchGateControlList.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qch_queueing/IEEE8021QchQueueing.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qcr/ATSFlowEstimator.o \
-    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/ATSQueue.o \
+    $O/can4cqf/linklayer/shaper/IEEE8021Qcr/AtsQueue.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qcr/ATSTokenBucket.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qcr/ATSTrafficRegulator.o \
     $O/can4cqf/linklayer/shaper/IEEE8021Qcr/CreditCalculator.o \
